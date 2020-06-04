@@ -1,10 +1,15 @@
 # expense-tracker-project
 
 ## Description
-Project 2 @ Ironhack Bootcamp. An expense tracker to analyse your finances and prepare your budget.
+The expense tracker app allows users to add transactions (expenses or income) by adding unique names to them, picking different categories, adding the amount in a currency they have chosen, etc. The user can also explore diagrams of their expenses/incomes by months and by category.
 
-## MVP (DOM - CANVAS)
-MVP definition, deliverables.
+## MVP
+- authorization/authentification
+- home page with all transactions listed
+- current balance listed
+- create transaction
+- edit transaction
+- explore chart/diagram
 
 
 ## Backlog
@@ -23,20 +28,20 @@ ist of repeated transactions
 future budget (what can I spend next months after repeated transactions and unique transactions I know will arrive)
 
 
-## Data structure
-Classes and methods definition.
+## Models
+UserModel {username, email, password, currency}
+TransactionModel {type, name, category, amount, date}
 
 
-## States y States Transitions
-Definition of the different states and their transition (transition functions)
+## Routes
 
-- Landing page
-- Sign up page
-- Sign in page
-- Home page
-- Create a transaction page
-- Edit a transaction page
-- Diagrams (expenses pie chart and income/expense column chart)
+- '/'  => Landing page
+- 'signup'  =>  Sign up page
+- 'signin'  =>  Sign in page
+- 'home'  =>  Home page
+- 'createtransaction'  =>  Create a transaction page
+- 'edittransaction'  =>  Edit a transaction page
+- 'diagram'  =>  diagrams (expenses pie chart and income/expense column chart)
 
 
 ## Task
@@ -47,15 +52,13 @@ Task definition in order of priority
 
 
 ### Trello
-[Link url](https://trello.com)
+[GitHub projects](https://github.com/ivanaKrucaj/expense-tracker-project/projects/1)
 
 
 ### Git
 URls for the project repo and deploy
 [Link Repo](https://github.com/ivanaKrucaj/expense-tracker-project/)
-[Link Deploy](http://github.com)
 
 
 ### Slides
-URls for the project presentation (slides)
-[Link Slides.com] (https://docs.google.com/presentation/d/1-FbjeNzbrOTmQg_mTNfTMontjGnMn1vP/edit#slide=id.p8)
+
