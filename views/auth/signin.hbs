@@ -1,4 +1,11 @@
-<div>
-    <h1>Sign in</h1>
+<form method="POST" action="/signin">
+    <label for="user-email">Email</label>
+    <input type="email" name="email" id="user-email" placeholder="marsh">
+    <label for="user-pass">Password</label>
+    <input type="password" name="password" id="user-pass" placeholder="We know it's your mom's name">
+    <button type="submit">Sign In</button>
+</form>
 
-</div>
+{{#if errorMessage}}
+<div class="error">{{errorMessage}}</div>
+{{/if}}

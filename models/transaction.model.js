@@ -38,6 +38,10 @@ const transactionSchema = new Schema(
       type: Date,
       required: [true, "Please enter a date"],
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

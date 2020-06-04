@@ -17,6 +17,7 @@ require("./configs/db.config");
 
 // Routers
 const indexRouter = require("./routes/index.routes");
+const authRouter = require("./routes/auth.routes");
 
 const app = express();
 
@@ -62,5 +63,6 @@ app.use(cookieParser());
 
 // Routes middleware
 app.use("/", indexRouter);
+app.use("/", authRouter);
 
 module.exports = app;

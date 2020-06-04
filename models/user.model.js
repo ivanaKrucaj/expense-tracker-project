@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
-require("mongoose-currency").loadType(mongoose);
-var Currency = mongoose.Types.Currency;
+// require("mongoose-currency").loadType(mongoose);
+// var Currency = mongoose.Types.Currency;
 
 const userSchema = new Schema(
   {
@@ -19,10 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    currency: {
-      amount: { type: Currency },
-      required: true,
-    },
+    // currency: {
+    //   amount: { type: Currency },
+    //   required: true,
+    // },
   },
   {
     timestamps: true,
