@@ -3,7 +3,7 @@
 ## Description
 The expense tracker app allows users to add transactions (expenses or income) by adding unique names to them, picking different categories, adding the amount in a currency they have chosen, etc. The user can also explore diagrams of their expenses/incomes by months and by category.
 
-## MVP
+## MVP (DOM - CANVAS)
 - authorization/authentification
 - home page with all transactions listed
 - current balance listed
@@ -29,6 +29,7 @@ future budget (what can I spend next months after repeated transactions and uniq
 
 
 ## Models
+
 UserModel {username, email, password, currency}
 TransactionModel {type, name, category, amount, date}
 
@@ -51,7 +52,7 @@ Task definition in order of priority
 ## Links
 
 
-### Trello
+### GitHub Projects
 [GitHub projects](https://github.com/ivanaKrucaj/expense-tracker-project/projects/1)
 
 
@@ -61,4 +62,5 @@ URls for the project repo and deploy
 
 
 ### Slides
+URls for the project presentation (slides)
 
