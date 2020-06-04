@@ -30,7 +30,7 @@ future budget (what can I spend next months after repeated transactions and uniq
 
 ## Models
 
-UserModel {username, email, password, currency}
+UserModel {username, email, password, (currency)}
 TransactionModel {type, name, category, amount, date}
 
 
