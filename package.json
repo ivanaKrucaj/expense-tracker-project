@@ -28,6 +28,7 @@
     "hbs": "^4.1.1",
     "http-errors": "^1.7.3",
     "mongoose": "^5.9.17",
+    "mongoose-currency": "^0.2.0",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0"
   }
