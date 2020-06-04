@@ -19,6 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+
     // currency: {
     //   amount: { type: Currency },
     //   required: true,
