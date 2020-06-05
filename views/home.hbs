@@ -2,6 +2,23 @@
     <h1>Welcome to home page</h1>
     <h2>list of transactions</h2>
 
+    <div>
+        {{#each newTrans}}
+        {{!-- {{#if  this.isExpenseType}} --}}
+            <div class="red-bg">
+                <p>{{this.name}}</p>
+                <small>{{this.date}}</small>
+                <p>{{this.amount}}</p>
+            </div>
+        {{!-- {{else}}
+             <div class="blue-bg">
+                <p>{{this.name}}</p>
+                <small>{{this.date}}</small>
+                <p>{{this.amount}}</p>
+            </div> --}}
+        {{!-- {{/if}} --}}
+        {{/each}}
+    </div>
 
     <a href="/createTrans">Create transaction</a>
 </div>

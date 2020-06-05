@@ -12,7 +12,21 @@ router.use((req, res, next) => {
 
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
-  res.render("home.hbs");
+
+  TransactionModel.find()
+    .then((transaction) => {
+      let newTrans = transaction.filter((element) => {
+        element.isExpenseType = element.type == 'expense'
+        console.log(element.user_id)
+        return element.user_id == req.session.loggedInUser._id
+      })
+      res.render("home.hbs", {newTrans});
+    })
+    .catch(() => {
+      res.send('Something went terribly wrong.')
+    })
+
+
 });
 
 
@@ -24,10 +38,10 @@ router.get("/createTrans", (req, res) => {
 // CREATE TRANSACTION ---------- POST
 router.post('/createTrans', (req, res) => {
   const {type, name, category, amount, date} = req.body
-  console.log(req.session.loggedInUser);
+  // console.log(req.session.loggedInUser);
   TransactionModel.create({type: type, name: name, category: category, amount: amount, date: date, user_id: req.session.loggedInUser._id})
     .then((response) => {
-      res.render('home.hbs')
+      res.redirect('/home')
     })
     .catch(() => {
       res.render('createTrans.hbs', {showErrorMessage: true})
