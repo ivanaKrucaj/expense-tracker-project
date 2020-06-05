@@ -1,4 +1,37 @@
 <div>
-    <h1>Create transaction</h1>
+        <a href="/logout">Logout</a>
 
+    <h1>Create transaction</h1>
+    <form action="/createTrans" method="POST">
+        <label for="type">Type:</label> 
+        <select name="type" id="type" placeholder='Select type'>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <label for="category">Category</label>
+        <select name="category" id="category" placeholder="select category">
+            <option value="food">Food</option>
+            <option value="transport">Transport</option>
+            <option value="accommodation">Accommodation</option>
+            <option value="salary">Salary</option>
+            <option value="travel">Travel</option>
+            <option value="bills">Bills</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="clothing">Clothing</option>
+            <option value="education">Education</option>
+            <option value="healthcare">Healthcare</option>
+        </select>
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="amount">
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date">
+        <button type="submit">Add transaction</button>
+         <button type="reset">Reset transaction</button>
+    </form>
+
+{{#if showErrorMessage}}
+    <p>Something went wrong. Transaction not created.</p>
+{{/if}}
 </div>

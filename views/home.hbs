@@ -1,4 +1,30 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
 <div>
     <h1>Welcome to home page</h1>
     <h2>list of transactions</h2>
+    <a href="/logout">Logout</a>
+
+    <p>{{reduceTrans}} €</p>
+    <div>
+        <a href="/createTrans">Create transaction</a>
+        {{#each reverseTrans}}
+        {{#if this.isExpenseType}}
+        <div class="red-bg">
+            <p>{{this.name}}</p>
+            <small>{{this.date}}</small>
+            <p>{{this.amount}} €</p>
+            <a href="/editTrans/{{this._id}}">Edit</a>
+            <a href="/home/delete/{{this._id}}">Delete</a>
+        </div>
+        {{else}}
+        <div class="blue-bg">
+            <p>{{this.name}}</p>
+            <small>{{this.date}}</small>
+            <p>{{this.amount}}</p>
+            <a href="/editTrans/{{this._id}}">Edit</a>
+            <a href="/home/delete/{{this._id}}">Delete</a>
+        </div>
+        {{/if}}
+        {{/each}}
+    </div>
 </div>

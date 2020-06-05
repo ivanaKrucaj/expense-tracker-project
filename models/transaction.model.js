@@ -1,7 +1,9 @@
 const { Schema, model } = require("mongoose");
+const UserModel = require('../models/user.model')
 
-require("mongoose-currency").loadType(mongoose);
-var Currency = mongoose.Types.Currency;
+// npm package for currency (optional):
+// require("mongoose-currency").loadType(mongoose);
+// var Currency = mongoose.Types.Currency;
 
 const transactionSchema = new Schema(
   {
@@ -38,7 +40,7 @@ const transactionSchema = new Schema(
       type: Date,
       required: [true, "Please enter a date"],
     },
-    owner: {
+    user_id: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
@@ -48,4 +50,5 @@ const transactionSchema = new Schema(
   }
 );
 
-module.exports = model("Transaction", transactionSchema);
+const TransactionModel = model("Transaction", transactionSchema);
+module.exports = TransactionModel
