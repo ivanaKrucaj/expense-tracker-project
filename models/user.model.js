@@ -19,7 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-
+    // transaction: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'Transaction'
+    // }
     // currency: {
     //   amount: { type: Currency },
     //   required: true,
@@ -30,4 +33,5 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = model("User", userSchema);
+const UserModel = model("User", userSchema);
+module.exports = UserModel
