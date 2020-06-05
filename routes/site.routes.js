@@ -26,7 +26,16 @@ router.get("/home", (req, res) => {
         return element.user_id == req.session.loggedInUser._id
       })
       let reverseTrans = newTrans.reverse()
-      res.render("home.hbs", {reverseTrans});
+      // calculating current balance:
+      let reduceTrans = reverseTrans.reduce((acc, value) => {
+        if(value.type == 'income'){
+          return acc + value.amount
+        } else {
+          return acc - value.amount
+        }
+        return acc
+      }, 0)
+      res.render("home.hbs", {reverseTrans, reduceTrans});
     })
     .catch(() => {
       res.send('Something went terribly wrong.')
