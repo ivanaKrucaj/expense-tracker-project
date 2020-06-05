@@ -13,20 +13,24 @@ router.use((req, res, next) => {
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
 
+  // display user(id) transactions on home page:
   TransactionModel.find()
     .then((transaction) => {
       let newTrans = transaction.filter((element) => {
-        element.isExpenseType = element.type == 'expense'
-        console.log(element.user_id)
+        if(element.type == 'expense') {
+          element.isExpenseType = true;
+        }
+        else {
+          element.isExpenseType = false;
+        }
         return element.user_id == req.session.loggedInUser._id
       })
-      res.render("home.hbs", {newTrans});
+      let reverseTrans = newTrans.reverse()
+      res.render("home.hbs", {reverseTrans});
     })
     .catch(() => {
       res.send('Something went terribly wrong.')
     })
-
-
 });
 
 
@@ -50,9 +54,44 @@ router.post('/createTrans', (req, res) => {
 
 
 // EDIT TRANSACTION ---------- GET
-router.get("/editTrans", (req, res) => {
-  res.render("editTrans.hbs");
+router.get('/editTrans/:id', (req, res) => {
+  let id = req.params.id
+  console.log(id)
+  TransactionModel.findById(id)
+    .then((transaction) => {
+      res.render("editTrans.hbs", {transaction});
+    })
+    .catch(() => {
+      res.send('Something went wrong.')
+    })
+})
+
+// EDIT TRANSACTION ---------- POST 
+router.post("/editTrans/:id", (req, res) => {
+  let id = req.params.id
+  console.log('The id is',id)
+
+  const {type, name, category, amount, date} = req.body
+  TransactionModel.findByIdAndUpdate(id, {$set: {type, name, category, amount, date}})
+    .then(() => {
+      res.redirect('/home')
+    })
+    .catch(() => {
+      res.send('Something went wrong.')
+    })
 });
+
+//DELETE TRANSACTION ------------ GET:
+router.get("/home/delete/:id", (req, res) => {
+
+  TransactionModel.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect('/home')
+    })
+    .catch(() => {
+      res.send('Something went wrong.')
+    })
+})
 
 
 // DIAGRAMS ---------- GET
