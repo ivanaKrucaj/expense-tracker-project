@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="/stylesheets/style.css">
 <div>
-    <h1>Welcome to home page</h1>
-    <h2>list of transactions</h2>
-    <a href="/logout">Logout</a>
     <h3>Hello {{userData.username}}</h3>
+    <a href="/logout">Logout</a>
+   {{!-- Current balance --}}
     <p>{{reduceTrans}} {{userData.currency}}</p>
+     <h4>list of transactions</h4>
     <div>
         <a href="/createTrans">Create transaction</a>
         {{#each reverseTrans}}

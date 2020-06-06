@@ -13,7 +13,7 @@ router.use((req, res, next) => {
 
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
-
+  
   // display user(id) transactions on home page:
   TransactionModel.find()
     .then((transaction) => {
