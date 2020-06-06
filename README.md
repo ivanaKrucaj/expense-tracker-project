@@ -30,7 +30,7 @@ future budget (what can I spend next months after repeated transactions and uniq
 
 ## Models
 
-UserModel {username, email, password, (currency)}
+UserModel {username, email, password, currency}
 TransactionModel {type, name, category, amount, date}
 
 
@@ -40,8 +40,8 @@ TransactionModel {type, name, category, amount, date}
 - 'signup'  =>  Sign up page
 - 'signin'  =>  Sign in page
 - 'home'  =>  Home page
-- 'createtransaction'  =>  Create a transaction page
-- 'edittransaction'  =>  Edit a transaction page
+- 'createTrans'  =>  Create a transaction page
+- 'editTrans/:id'  =>  Edit a transaction page
 - 'diagram'  =>  diagrams (expenses pie chart and income/expense column chart)
 
 
