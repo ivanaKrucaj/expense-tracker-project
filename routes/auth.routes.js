@@ -43,7 +43,8 @@ router.post("/signup", (req, res) => {
     console.log("Salt: ", salt);
     bcrypt.hash(password, salt).then((password) => {
       UserModel.create({ email, username, password })
-        .then(() => {
+        .then((userData) => {
+          req.session.loggedInUser = userData;
           res.redirect("/home");
         })
         .catch((err) => {

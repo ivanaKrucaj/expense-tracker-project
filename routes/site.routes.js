@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const TransactionModel = require('../models/transaction.model')
+const UserModel = require('../models/user.model')
 
 router.use((req, res, next) => {
   if (req.session.loggedInUser) {
@@ -35,7 +36,8 @@ router.get("/home", (req, res) => {
         }
         return acc
       }, 0)
-      res.render("home.hbs", {reverseTrans, reduceTrans});
+      const userData = req.session.loggedInUser
+      res.render("home.hbs", {reverseTrans, reduceTrans, userData});
     })
     .catch(() => {
       res.send('Something went terribly wrong.')
