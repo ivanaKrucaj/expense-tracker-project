@@ -8,10 +8,10 @@ router.get("/signup", (req, res) => res.render("auth/signup"));
 
 // SIGN UP ------------ POST
 router.post("/signup", (req, res) => {
-  const { username, email, password } = req.body;
-  console.log(username, email, password);
+  const { username, email, password, currency } = req.body;
+  console.log(username, email, password, currency);
 
-  if (!username || !email || !password) {
+  if (!username || !email || !password || !currency) {
     res.status(500).render("auth/signup.hbs", {
       errorMessage: "Please enter username, email and password",
     });
@@ -42,7 +42,7 @@ router.post("/signup", (req, res) => {
   bcrypt.genSalt(12).then((salt) => {
     console.log("Salt: ", salt);
     bcrypt.hash(password, salt).then((password) => {
-      UserModel.create({ email, username, password })
+      UserModel.create({ email, username, password, currency })
         .then((userData) => {
           req.session.loggedInUser = userData;
           res.redirect("/home");

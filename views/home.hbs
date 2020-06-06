@@ -4,7 +4,7 @@
     <h2>list of transactions</h2>
     <a href="/logout">Logout</a>
     <h3>Hello {{userData.username}}</h3>
-    <p>{{reduceTrans}} €</p>
+    <p>{{reduceTrans}} {{userData.currency}}</p>
     <div>
         <a href="/createTrans">Create transaction</a>
         {{#each reverseTrans}}
@@ -12,7 +12,7 @@
         <div class="red-bg">
             <p>{{this.name}}</p>
             <small>{{this.date}}</small>
-            <p>{{this.amount}} €</p>
+            <p>{{this.amount}}</p>
             <a href="/editTrans/{{this._id}}">Edit</a>
             <a href="/home/delete/{{this._id}}">Delete</a>
         </div>

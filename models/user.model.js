@@ -8,25 +8,25 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: [true, "Please enter username"],
-      unique: true,
+      unique: true
     },
     email: {
       type: String,
       required: [true, "Please enter email"],
-      unique: [true, "Email registered. Please use a new one"],
+      unique: [true, "Email registered. Please use a new one"]
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
     // transaction: {
     //   type: Schema.Types.ObjectId,
     //   ref: 'Transaction'
     // }
-    // currency: {
-    //   amount: { type: Currency },
-    //   required: true,
-    // },
+    currency: {
+      type: String,
+      required: true
+    },
   },
   {
     timestamps: true,
