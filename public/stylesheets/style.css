@@ -1,7 +1,23 @@
+.header {
+    height: 250px;
+    background-color: lightslategray;
+}
+
+.flex-position {
+    display: flex;
+    flex-direction: row;
+}
+
 .red-bg {
     background-color: lightsalmon;
 }
 
 .blue-bg {
     background-color: lightskyblue;
+}
+
+/* Font Awesome Icon */
+.fontawesome {
+    height: 50%;
+    width:50%;
 }
