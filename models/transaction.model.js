@@ -45,9 +45,9 @@ const transactionSchema = new Schema(
       ref: "User",
     },
   },
-  // {
-  //   timestamps: true,
-  // }
+  {
+    timestamps: true,
+  }
 );
 
 const TransactionModel = model("Transaction", transactionSchema);

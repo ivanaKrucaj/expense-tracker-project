@@ -51,11 +51,28 @@ router.get("/home", (req, res) => {
         return acc
       }, 0)
       const userData = req.session.loggedInUser
-      // Current balance
+      // Current balance:
       const currency = reduceTrans.toLocaleString('de-DE', { style: 'currency', currency: userData.currency});
-      const upperCaseName = userData.username.slice(0, 1).toUpperCase() + userData.username.slice(1)
+      // Greeting name uppercased:
+      const upperCaseName = userData.username.slice(0, 1).toUpperCase() + userData.username.slice(1);
+      // format the date
+      const transactionsToDisplay = reverseTrans.map((tr) => {
+        if (tr.date) {
+          tr.formattedDate = tr.date.toLocaleString('en-GB', {
+            month: 'long', // "June"
+            day: '2-digit', // "01"
+            year: 'numeric' // "2019"
+          });
+        }
+        
+        // if(tr.name == tr.name.toLowerCase()){
+          tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
+        // } 
+        
+        return tr
+      })
       // render all created objects into the home page:
-      res.render("home.hbs", {reverseTrans, reduceTrans, userData, currency, upperCaseName});
+      res.render("home.hbs", {transactionsToDisplay, reduceTrans, userData, currency, upperCaseName});
     })
     .catch((err) => {
       console.log(err)

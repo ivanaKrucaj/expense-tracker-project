@@ -10,7 +10,7 @@
 
 <div class="intro">
     <h3 class="user-greeting">Hello {{upperCaseName}}</h3>
-    <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fontawesome"></i></a>
+    <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
 </div>
 
 
@@ -22,53 +22,55 @@
 
 
 {{!-- Filter --}}
+<div class="filter-position">
+    <form action="/home" method="GET">
+        <select id="inputType" class="form-item" name="type">
+            <option>Select type</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <select id="inputCategory" class="form-item" name="category">
+            <option>Select category</option>
+            <option value="food">Food</option>
+            <option value="transport">Transport</option>
+            <option value="accommodation">Accommodation</option>
+            <option value="salary">Salary</option>
+            <option value="travel">Travel</option>
+            <option value="bills">Bills</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="clothing">Clothing</option>
+            <option value="education">Education</option>
+            <option value="healthcare">Healthcare</option>
+        </select>
+        {{!-- <input type="date" class="form-control"> --}}
+        <button type="submit" class="btn btn-info filter-btn">Search</button>
+    </form>
 
-        <form action="/home" method="GET">
-            <select id="inputType" class="form-control" name="type">
-                <option>Select type</option>
-                <option value="income">Income</option>
-                <option value="expense">Expense</option>
-            </select>
-            <select id="inputCategory" class="form-control" name="category">
-                <option>Select category</option>
-                <option value="food">Food</option>
-                <option value="transport">Transport</option>
-                <option value="accommodation">Accommodation</option>
-                <option value="salary">Salary</option>
-                <option value="travel">Travel</option>
-                <option value="bills">Bills</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="clothing">Clothing</option>
-                <option value="education">Education</option>
-                <option value="healthcare">Healthcare</option>
-            </select>
-            {{!-- <input type="date" class="form-control"> --}}
-            <button type="submit" class="btn btn-primary btn-block">Search</button>
-        </form>
+    <form action="/home" method="GET">
+        <button type="submit" class="btn btn-outline-info filter-btn reset-btn">Reset</button>
+    </form>
+</div>
 
-        <form action="/home" method="GET">
-            <button type="submit" class="btn btn-primary btn-block">Reset</button>
-        </form>
 
 
 {{!-- Transactions--}}
-<h4 class="trans-title">Earlier this month</h4>
+<h5 class="trans-title">Earlier this month</h5>
 <div>
-    {{#each reverseTrans}}
+    {{#each transactionsToDisplay}}
     {{#if this.isExpenseType}}
     <div class="trans-display">
         <div class="center">
             <div class="red-bg row">
                 <div class="col-6">
-                    <p>{{this.name}}</p>
-                    <small>{{this.date}}</small>
+                    <p class="trans-name">{{uppercaseTransName}}</p>
+                    <small>{{this.formattedDate}}</small>
                 </div>
                 <div class="col-3">
-                    <a href="/editTrans/{{this._id}}"><i class="fas fa-edit fontawesome"></i></a>
-                    <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome"></i></a>
+                    <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
+                    <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
                 </div>
                 <div class="col-3 card-amount">
-                    <p>- {{this.amount}}</p>
+                    <p class="trans-amount">- {{this.amount}}</p>
                 </div>
             </div>
         </div>
@@ -77,44 +79,25 @@
         <div class="center">
             <div class="blue-bg row">
                 <div class="col-6">
-                    <p>{{this.name}}</p>
-                    <small>{{this.date}}</small>
+                    <p class="trans-name">{{uppercaseTransName}}</p>
+                    <small>{{this.formattedDate}}</small>
                 </div>
                 <div class="col-3">
-                    <a href="/editTrans/{{this._id}}"><i class="fas fa-edit fontawesome"></i></a>
-                    <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome"></i></a>
+                    <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
+                    <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
                 </div>
                 <div class="col-3 card-amount">
-                    <p>+ {{this.amount}}</p>
+                    <p class="trans-amount">+ {{this.amount}}</p>
                 </div>
             </div>
         </div>
         {{/if}}
         {{/each}}
     </div>
+    {{!-- Create button alternative --}}
     {{!-- <div class="create-btn col-2">
         <a href="/createTrans"><i class="fas fa-plus-circle fa-3x fontawesome"></i></a>
     </div> --}}
-
-</div>
-
-{{!-- Navigation bar --}}
-<div class="navigation-bar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/home"><i class="fas fa-home fontawesome fa-2x"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/createTrans"><i class="fas fa-plus-circle fa-2x fontawesome"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/diagrams"><i class="fas fa-chart-pie fontawesome fa-2x"></i></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 </div>
 
 </div>

@@ -1,37 +1,52 @@
-<div>
-        <a href="/logout">Logout</a>
 
-    <h1>Create transaction</h1>
-    <form action="/createTrans" method="POST">
-        <label for="type">Type:</label> 
-        <select name="type" id="type" placeholder='Select type'>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-        </select>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-        <label for="category">Category</label>
-        <select name="category" id="category" placeholder="select category">
-            <option value="food">Food</option>
-            <option value="transport">Transport</option>
-            <option value="accommodation">Accommodation</option>
-            <option value="salary">Salary</option>
-            <option value="travel">Travel</option>
-            <option value="bills">Bills</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="clothing">Clothing</option>
-            <option value="education">Education</option>
-            <option value="healthcare">Healthcare</option>
-        </select>
-        <label for="amount">Amount:</label>
-        <input type="number" step="0.01" name="amount" id="amount">
-        <label for="date">Date:</label>
-        <input type="date" name="date" id="date" required pattern="dd-mm-yyyy">
-        <button type="submit">Add transaction</button>
-        <button type="reset">Reset transaction</button>
-    </form>
+    <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
+
+    <div class="container">
+        <h1>Create transaction</h1>
+
+        <form action="/createTrans" method="POST">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select multiple class="form-control" id="category" name="category">
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="accommodation">Accommodation</option>
+                    <option value="salary">Salary</option>
+                    <option value="travel">Travel</option>
+                    <option value="bills">Bills</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="education">Education</option>
+                    <option value="healthcare">Healthcare</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" step="0.01" name="amount" id="amount">
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date" required pattern="dd-mm-yyyy">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-info">Add transaction</button>
+                <button type="reset" class="btn btn-info">Reset transaction</button>
+            </div>
+        </form>
+    </div>
+
 
 {{#if showErrorMessage}}
     <p>Something went wrong. Transaction not created.</p>
 {{/if}}
-</div>

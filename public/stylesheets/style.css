@@ -1,9 +1,10 @@
 body {
     font-family: 'Merriweather Sans', sans-serif;
+    margin: 0;
 }
 
 .header {
-    height: 250px;
+    height: 150px;
     background-color: lightslategray;
 }
 
@@ -12,7 +13,7 @@ body {
     display: flex;
     flex-direction: row;
     position: relative;
-    margin: 3% 0 3% 7%;
+    margin: 3% 0 3% 20%;
 }
 
 .user-greeting {
@@ -22,20 +23,50 @@ body {
 
 .logout-btn {
     position: absolute;
-    left: 83%;
+    left: 72%;
+}
+
+.fa-logout {
+    color: black;
+}
+
+.fa-logout:hover {
+    color: slategrey;
 }
 
 .current-balance {
-    margin: 3% 0 3% 7%;
+    margin: 3% 0 3% 20%;
 }
 
 /* Filter */
+.filter-position {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
 
+.form-item {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 300;
+    color: #495057;
+    background-clip: padding-box;
+    border-radius: 10px;
+}
 
+.filter-btn {
+    margin-right: 7px;
+}
+
+.reset-btn {
+    position: absolute;
+    top: 3px;
+}
 
 /* Transactions */
 .trans-title {
-    margin: 3% 0 3% 7%;
+    margin: 3% 0 3% 20%;
 }
 
 .center {
@@ -47,15 +78,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: rgb(250, 250, 250);
     width: 60%;
     height: 50%;
     margin: 10px auto;
     padding: 10px;
     border: 2px solid #eee;
-    border-radius: 20px;
+    border-radius: 10px;
     box-sizing: border-box;
     box-shadow: 2px 2px 10px #eee;
+    position: relative;
 }
 
 .red-bg p {
@@ -66,31 +98,72 @@ body {
     color: lightskyblue;
 }
 
-.card-amount {
-    margin
+.trans-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
 }
 
-.create-btn {
+.trans-amount {
+    position: absolute;
+    top: -13px;
+    right: 20px;
+}
+
+.fa-edit {
+    position: absolute;
+    right: -20px;
+    top: -19px;
+}
+
+.fa-delete {
+    position: absolute;
+    right: 20px;
+    top: -19px;
+}
+
+/* .create-btn {
     display: flex;
     justify-content: center;
-    /* position: fixed; */
     margin-right: 10%;
     margin-bottom: 5%;
-}
+} */
 
 /* Font Awesome Icon */
 .fontawesome {
-    color: black;
-    padding: 10px 30px;
+    color: #808080;
+    padding: 10px 15px;
 }
-
 
 .fontawesome:hover {
-    color: grey;
+    color: black;
 }
 
-.navigation-bar {
+.navbar-bg {
+    background-color: lightslategray;
+    width: 100%;
+}
+
+.navbar-items-position {
     display: flex;
     justify-content: center;
-    position: sticky;
+}
+
+.fa-nav-home, .fa-nav-create {
+    color: black;
+    margin-right: 150px;
+}
+
+.fa-nav-diagram {
+    color: black;
+}
+
+.fa-nav-home:hover, .fa-nav-create:hover, .fa-nav-diagram:hover {
+    color: white;
+}
+
+/* Create transaction page */
+.container {
+    margin-left: 20%;
+    margin-top: 3%;
 }

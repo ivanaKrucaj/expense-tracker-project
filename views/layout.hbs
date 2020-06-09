@@ -18,10 +18,28 @@
 
 <body>
     <header class="header">
-
+        <h2>Show me the money</h2>
     </header>
-    <div>
-        {{{body}}}
-    </div>
+    
+             {{{body}}}
+  
+    {{!-- Navigation bar --}}
+<div class="navigation-bar fixed-bottom">
+    <nav class="navbar navbar-expand-lg navbar-bg">
+        <div class="collapse navbar-collapse navbar-items-position" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home"><i class="fas fa-home fa-2x fa-nav-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/createTrans"><i class="fas fa-plus-circle fa-2x fa-nav-create"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/diagrams"><i class="fas fa-chart-pie fa-2x fa-nav-diagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 </body>
 </html>
