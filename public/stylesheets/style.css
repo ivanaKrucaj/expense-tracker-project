@@ -1,11 +1,41 @@
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
 .header {
     height: 250px;
     background-color: lightslategray;
 }
 
-.flex-position {
+/* Home Page */
+.intro {
     display: flex;
     flex-direction: row;
+    position: relative;
+    margin: 3% 0 3% 7%;
+}
+
+.user-greeting {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    position: absolute;
+    left: 83%;
+}
+
+.current-balance {
+    margin: 3% 0 3% 7%;
+}
+
+/* Filter */
+
+
+
+/* Transactions */
+.trans-title {
+    margin: 3% 0 3% 7%;
 }
 
 .center {
@@ -36,9 +66,13 @@
     color: lightskyblue;
 }
 
+.card-amount {
+    margin
+}
+
 .create-btn {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     /* position: fixed; */
     margin-right: 10%;
     margin-bottom: 5%;
@@ -46,6 +80,17 @@
 
 /* Font Awesome Icon */
 .fontawesome {
-    height: 50%;
-    width:50%;
+    color: black;
+    padding: 10px 30px;
+}
+
+
+.fontawesome:hover {
+    color: grey;
+}
+
+.navigation-bar {
+    display: flex;
+    justify-content: center;
+    position: sticky;
 }
