@@ -8,12 +8,40 @@
     flex-direction: row;
 }
 
-.red-bg {
-    background-color: lightsalmon;
+.center {
+    display: flex;
+    justify-content: center;
 }
 
-.blue-bg {
-    background-color: lightskyblue;
+.red-bg, .blue-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    width: 60%;
+    height: 50%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 10px #eee;
+}
+
+.red-bg p {
+    color: lightsalmon;
+}
+
+.blue-bg p {
+    color: lightskyblue;
+}
+
+.create-btn {
+    display: flex;
+    justify-content: flex-end;
+    /* position: fixed; */
+    margin-right: 10%;
+    margin-bottom: 5%;
 }
 
 /* Font Awesome Icon */
