@@ -1,19 +1,25 @@
 body {
     font-family: 'Merriweather Sans', sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #131313;
+    color: white;
 }
 
-.header {
-    height: 150px;
-    background-color: lightslategray;
+.container {
+    margin-top: 3%;
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Home Page */
 .intro {
     display: flex;
-    flex-direction: row;
-    position: relative;
-    margin: 3% 0 3% 20%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3% 0;
 }
 
 .user-greeting {
@@ -21,81 +27,86 @@ body {
     font-weight: bold;
 }
 
-.logout-btn {
-    position: absolute;
-    left: 72%;
-}
-
 .fa-logout {
-    color: black;
+    color: white;
 }
 
 .fa-logout:hover {
-    color: slategrey;
+    color: #3d3d3d;
+}
+
+.balance-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .current-balance {
-    margin: 3% 0 3% 20%;
+    margin: 3% 0;
 }
 
 /* Filter */
 .filter-position {
-    text-align: center;
     display: flex;
-    justify-content: center;
-    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .form-item {
-    padding: 10px 20px;
-    font-size: 15px;
+    padding: 2% 20px;
+    font-size: 14px;
     font-weight: 300;
-    color: #495057;
-    background-clip: padding-box;
-    border-radius: 10px;
-}
-
-.filter-btn {
-    margin-right: 7px;
-}
-
-.reset-btn {
-    position: absolute;
-    top: 3px;
+    color: white;
+    border-radius: 8px;
+    background-color: #3d3d3d;
 }
 
 /* Transactions */
 .trans-title {
-    margin: 3% 0 3% 20%;
+    margin: 5% 0 2%;
 }
 
-.center {
+.col-name {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.col-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.col-amount {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
 }
 
 .red-bg, .blue-bg {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(250, 250, 250);
-    width: 60%;
-    height: 50%;
-    margin: 10px auto;
+    background-color: #212121;
+    margin: 5px 0;
     padding: 10px;
-    border: 2px solid #eee;
-    border-radius: 10px;
+    border: 2px solid #212121;
+    border-radius: 8px;
     box-sizing: border-box;
-    box-shadow: 2px 2px 10px #eee;
     position: relative;
 }
 
-.red-bg p {
-    color: lightsalmon;
+.amount-red {
+    color: #c49084;
+    font-weight: bold;
+    font-size: 18px;
 }
 
-.blue-bg p {
-    color: lightskyblue;
+.amount-blue {
+    color: #506a77;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .trans-name {
@@ -104,39 +115,14 @@ body {
     margin: 0;
 }
 
-.trans-amount {
-    position: absolute;
-    top: -13px;
-    right: 20px;
-}
-
-.fa-edit {
-    position: absolute;
-    right: -20px;
-    top: -19px;
-}
-
-.fa-delete {
-    position: absolute;
-    right: 20px;
-    top: -19px;
-}
-
-/* .create-btn {
-    display: flex;
-    justify-content: center;
-    margin-right: 10%;
-    margin-bottom: 5%;
-} */
-
 /* Font Awesome Icon */
 .fontawesome {
     color: #808080;
-    padding: 10px 15px;
+    padding: 0 10px;
 }
 
 .fontawesome:hover {
-    color: black;
+    color: white;
 }
 
 .navbar-bg {
@@ -150,20 +136,52 @@ body {
 }
 
 .fa-nav-home, .fa-nav-create {
-    color: black;
-    margin-right: 150px;
+    color: white;
+    margin-right: 70px;
 }
 
 .fa-nav-diagram {
-    color: black;
-}
-
-.fa-nav-home:hover, .fa-nav-create:hover, .fa-nav-diagram:hover {
     color: white;
 }
 
+.fa-nav-home:hover, .fa-nav-create:hover, .fa-nav-diagram:hover {
+    color: #3d3d3d;
+}
+
 /* Create transaction page */
-.container {
-    margin-left: 20%;
-    margin-top: 3%;
+.create-title {
+    font-size: 40px;
+    line-height: 1.5;
+}
+
+.create-name {
+    display: inline;
+    margin-left: 5%;
+}
+
+.create-form-item {
+    padding: 1% 2%;
+    background-color: #3d3d3d;
+    border-color: #3d3d3d;
+    border-radius: 8px;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 3%;
+}
+
+/* Diagrams page */
+.diagram-page {
+    margin: 4%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+}
+
+footer p {
+    font-size: 0.7rem;
 }

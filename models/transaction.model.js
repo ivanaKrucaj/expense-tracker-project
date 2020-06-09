@@ -30,6 +30,7 @@ const transactionSchema = new Schema(
         "clothing",
         "education",
         "healthcare",
+        "other"
       ],
     },
     amount: {
