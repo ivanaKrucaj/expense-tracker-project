@@ -1,103 +1,92 @@
-{{!-- Bootstrap --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-{{!-- Google Fonts --}}
-<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;700;800&display=swap"
-    rel="stylesheet">
-{{!-- Font Awesome Icons --}}
-<script src="https://kit.fontawesome.com/a337f7a40e.js" crossorigin="anonymous"></script>
+<div class="container">
+    <div class="intro sticky-top">
+        <h3 class="user-greeting">Hello {{upperCaseName}}</h3>
+        <a href="/logout"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
+    </div>
 
 
-<div class="intro">
-    <h3 class="user-greeting">Hello {{upperCaseName}}</h3>
-    <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
-</div>
+    <div class="balance-filter row">
+        {{!-- Current balance --}}
+        <div class="current-balance col-lg-4">
+            <h2>{{currency}}</h2>
+            <small>Current balance</small>
+        </div>
 
+        {{!-- Filter --}}
+        <div class="filter-position col-lg-8">
+            <form action="/home" method="GET">
+                <select id="inputType" class="form-item" name="type">
+                    <option value="" disabled selected hidden>Select type</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+                <select id="inputCategory" class="form-item" name="category">
+                    <option value="" disabled selected hidden>Select category</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="accommodation">Accommodation</option>
+                    <option value="salary">Salary</option>
+                    <option value="travel">Travel</option>
+                    <option value="bills">Bills</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="education">Education</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="healthcare">Other</option>
+                </select>
+                {{!-- <input type="date" class="form-control"> --}}
+                <button type="submit" class="btn btn-info filter-btn">Search</button>
+            </form>
 
-{{!-- Current balance --}}
-<div class="current-balance">
-    <h2>{{currency}}</h2>
-    <small>Current balance</small>
-</div>
-
-
-{{!-- Filter --}}
-<div class="filter-position">
-    <form action="/home" method="GET">
-        <select id="inputType" class="form-item" name="type">
-            <option>Select type</option>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-        </select>
-        <select id="inputCategory" class="form-item" name="category">
-            <option>Select category</option>
-            <option value="food">Food</option>
-            <option value="transport">Transport</option>
-            <option value="accommodation">Accommodation</option>
-            <option value="salary">Salary</option>
-            <option value="travel">Travel</option>
-            <option value="bills">Bills</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="clothing">Clothing</option>
-            <option value="education">Education</option>
-            <option value="healthcare">Healthcare</option>
-        </select>
-        {{!-- <input type="date" class="form-control"> --}}
-        <button type="submit" class="btn btn-info filter-btn">Search</button>
-    </form>
-
-    <form action="/home" method="GET">
-        <button type="submit" class="btn btn-outline-info filter-btn reset-btn">Reset</button>
-    </form>
-</div>
+            <form action="/home" method="GET">
+                <button type="submit" class="btn btn-outline-info filter-btn reset-btn">Reset</button>
+            </form>
+        </div>
+    </div>
 
 
 
-{{!-- Transactions--}}
-<h5 class="trans-title">Earlier this month</h5>
-<div>
+    {{!-- Transactions--}}
+    <h6 class="trans-title">Earlier this month</h6>
+
     {{#each transactionsToDisplay}}
     {{#if this.isExpenseType}}
-    <div class="trans-display">
-        <div class="center">
-            <div class="red-bg row">
-                <div class="col-6">
-                    <p class="trans-name">{{uppercaseTransName}}</p>
-                    <small>{{this.formattedDate}}</small>
-                </div>
-                <div class="col-3">
-                    <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
-                    <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
-                </div>
-                <div class="col-3 card-amount">
-                    <p class="trans-amount">- {{this.amount}}</p>
-                </div>
+    <div class="transaction-container">
+        <div class="red-bg row">
+            <div class="col-6 col-name">
+                <p class="trans-name">{{this.name}}</p>
+                <small>{{this.formattedDate}}</small>
+            </div>
+            {{!-- <div class="col-lg-3">
+            </div> --}}
+            <div class="col-3 col-btn">
+                <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
+                <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
+            </div>
+            <div class="col-3 col-amount">
+                <p class="amount-red">- {{this.amount}}</p>
             </div>
         </div>
 
         {{else}}
-        <div class="center">
-            <div class="blue-bg row">
-                <div class="col-6">
-                    <p class="trans-name">{{uppercaseTransName}}</p>
-                    <small>{{this.formattedDate}}</small>
-                </div>
-                <div class="col-3">
-                    <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
-                    <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
-                </div>
-                <div class="col-3 card-amount">
-                    <p class="trans-amount">+ {{this.amount}}</p>
-                </div>
+
+        <div class="blue-bg row">
+            <div class="col-6 col-name">
+                <p class="trans-name">{{this.name}}</p>
+                <small>{{this.formattedDate}}</small>
+            </div>
+            {{!-- <div class="col-lg-3">
+            </div> --}}
+            <div class="col-3 col-btn">
+                <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
+                <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
+            </div>
+            <div class="col-3 col-amount">
+                <p class="amount-blue">+ {{this.amount}}</p>
             </div>
         </div>
         {{/if}}
         {{/each}}
     </div>
-    {{!-- Create button alternative --}}
-    {{!-- <div class="create-btn col-2">
-        <a href="/createTrans"><i class="fas fa-plus-circle fa-3x fontawesome"></i></a>
-    </div> --}}
-</div>
 
 </div>

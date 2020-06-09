@@ -61,13 +61,11 @@ router.get("/home", (req, res) => {
           tr.formattedDate = tr.date.toLocaleString('en-GB', {
             month: 'long', // "June"
             day: '2-digit', // "01"
-            year: 'numeric' // "2019 test"
+            year: 'numeric' // "2019"
           });
         }
         
-        // if(tr.name == tr.name.toLowerCase()){
-          tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
-        // } 
+        // tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
         
         return tr
       })
@@ -106,7 +104,20 @@ router.get('/editTrans/:id', (req, res) => {
   console.log(id)
   TransactionModel.findById(id)
     .then((transaction) => {
-      res.render("editTrans.hbs", {transaction});
+      
+      let isSelected = (type, expectedType) => {
+        if (type === expectedType) {
+          return 'selected'
+        } else {
+          return ''
+        }
+      }
+      const transactionTypes = [
+        {type: 'income', name: 'Income', selected: isSelected(transaction.type, 'income') },
+        {type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
+      ]
+
+      res.render("editTrans.hbs", {transactionTypes, transaction});
     })
     .catch(() => {
       res.send('Something went wrong.')
