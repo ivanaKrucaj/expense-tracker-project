@@ -20,6 +20,7 @@
   "homepage": "https://github.com/ivanaKrucaj/expense-tracker-project#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chart.js": "^2.9.3",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -27,9 +28,13 @@
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "http-errors": "^1.7.3",
+    "jsdom": "^16.2.2",
     "mongoose": "^5.9.17",
     "mongoose-currency": "^0.2.0",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "canvas": "^2.6.1"
   }
 }

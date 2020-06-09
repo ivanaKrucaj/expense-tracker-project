@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const TransactionModel = require('../models/transaction.model')
 const UserModel = require('../models/user.model')
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const Chart = require('chart.js')
 
 router.use((req, res, next) => {
   if (req.session.loggedInUser) {
@@ -13,10 +16,21 @@ router.use((req, res, next) => {
 
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
-  
+  console.log(req.query)
+
+  // define queries for filter feature:
+  let mongooseQuery = {}
+  if (req.query.type) {
+    mongooseQuery.type = req.query.type
+  }
+  if (req.query.category) {
+    mongooseQuery.category = req.query.category
+  }
+
   // display user(id) transactions on home page:
-  TransactionModel.find()
+  TransactionModel.find(mongooseQuery)
     .then((transaction) => {
+      // add property to transaction object so we can filter income and expenses by bg color on home page:
       let newTrans = transaction.filter((element) => {
         if(element.type == 'expense') {
           element.isExpenseType = true;
@@ -27,7 +41,7 @@ router.get("/home", (req, res) => {
         return element.user_id == req.session.loggedInUser._id
       })
       let reverseTrans = newTrans.reverse()
-      // calculating current balance:
+      // calculate current balance:
       let reduceTrans = reverseTrans.reduce((acc, value) => {
         if(value.type == 'income'){
           return acc + value.amount
@@ -37,10 +51,15 @@ router.get("/home", (req, res) => {
         return acc
       }, 0)
       const userData = req.session.loggedInUser
-      res.render("home.hbs", {reverseTrans, reduceTrans, userData});
+      // Current balance
+      const currency = reduceTrans.toLocaleString('de-DE', { style: 'currency', currency: userData.currency});
+      const upperCaseName = userData.username.slice(0, 1).toUpperCase() + userData.username.slice(1)
+      // render all created objects into the home page:
+      res.render("home.hbs", {reverseTrans, reduceTrans, userData, currency, upperCaseName});
     })
-    .catch(() => {
-      res.send('Something went terribly wrong.')
+    .catch((err) => {
+      console.log(err)
+      res.send('Something went terribly wrong.', err)
     })
 });
 
@@ -107,8 +126,28 @@ router.get("/home/delete/:id", (req, res) => {
 
 // DIAGRAMS ---------- GET
 router.get("/diagrams", (req, res) => {
-  res.render("diagrams.hbs");
+  TransactionModel.find()
+    .then((transaction) => {
+      let canvas;
+      res.render("diagrams.hbs", {transaction});
+    })
+    .catch((err) => {
+      res.send('No charts for you', err)
+    })
+  
 });
+
+router.get('/diagramsJson', (req, res) => {
+  const userTransactions = req.session.loggedInUser._id
+  TransactionModel.find({user_id: userTransactions})
+    .then((transaction) => {
+
+      res.json({transaction});
+    })
+    .catch((err) => {
+      res.send('No charts for you', err)
+    })
+})
 
 
 module.exports = router;
