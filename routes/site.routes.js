@@ -61,7 +61,7 @@ router.get("/home", (req, res) => {
           tr.formattedDate = tr.date.toLocaleString('en-GB', {
             month: 'long', // "June"
             day: '2-digit', // "01"
-            year: 'numeric' // "2019"
+            year: 'numeric' // "2019 test"
           });
         }
         
