@@ -66,7 +66,7 @@ router.get("/home", (req, res) => {
         }
         
         // tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
-        
+
         return tr
       })
       // render all created objects into the home page:
