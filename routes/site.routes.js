@@ -6,6 +6,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const Chart = require("chart.js");
 
+// protected sites middleware
 router.use((req, res, next) => {
   if (req.session.loggedInUser) {
     next();
@@ -14,9 +15,9 @@ router.use((req, res, next) => {
   }
 });
 
-router.use(function(req, res, next) {
-  if (!req.session.loggedInUser)
-      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+// logout middleware
+router.use(function (req, res, next) {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   next();
 });
 
@@ -130,7 +131,7 @@ router.get("/editTrans/:id", (req, res) => {
         { type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
       ]
       const formattedDate = transaction.date.toISOString().substring(0, 10)
-      
+
       res.render("editTrans.hbs", { transactionTypes, transaction, formattedDate });
     })
     .catch(() => {

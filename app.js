@@ -37,7 +37,7 @@ passport.use(
     {
       clientID: "761570140059-mmuar714shr10lfpi6honv4vkmq78ads.apps.googleusercontent.com",
       clientSecret: "oHjPV7r4BMOp8YlbBR6cdGJN",
-      callbackURL: "/google/callback"
+      callbackURL: "google/callback"
     },
     (accessToken, refreshToken, profile, done) => {
       // to see the structure of the data in received response:
