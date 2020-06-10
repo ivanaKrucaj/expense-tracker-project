@@ -6,7 +6,7 @@ const express = require("express");
 const logger = require("morgan");
 
 // Used to setthe favicon for our app
-const favicon = require("serve-favicon");
+// const favicon = require("serve-favicon");
 
 const cookieParser = require("cookie-parser");
 const hbs = require("hbs");
@@ -29,7 +29,7 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 
 // setting up the middleware to let it know where to find the favicon icon
-app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
+// app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // Sets up morgan in our middleware so that we can see the requests getting logged
 app.use(logger("dev"));
