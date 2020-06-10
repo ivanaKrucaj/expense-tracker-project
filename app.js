@@ -5,7 +5,7 @@ const express = require("express");
 //A library that helps us log the requests in the console
 const logger = require("morgan");
 
-// Used to setthe favicon for our app
+// Used to set the favicon for our app
 // const favicon = require("serve-favicon");
 
 const cookieParser = require("cookie-parser");
