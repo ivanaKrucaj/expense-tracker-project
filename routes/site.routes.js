@@ -8,6 +8,9 @@ const Chart = require("chart.js");
 
 // protected sites middleware
 router.use((req, res, next) => {
+  if (req.session.passport) {
+    req.session.loggedInUser = req.session.passport.user
+  }
   if (req.session.loggedInUser) {
     next();
   } else {
