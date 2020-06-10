@@ -1,23 +1,39 @@
 .header {
-    height: 250px;
-    background-color: lightslategray;
+  height: 100px;
+  background-color: lightslategray;
 }
 
 .flex-position {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .red-bg {
-    background-color: lightsalmon;
+  background-color: lightsalmon;
 }
 
 .blue-bg {
-    background-color: lightskyblue;
+  background-color: lightskyblue;
 }
 
 /* Font Awesome Icon */
 .fontawesome {
-    height: 50%;
-    width:50%;
+  height: 50%;
+  width: 50%;
+}
+
+.landing-container {
+  background-color: color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.h4-landing {
+  list-style-image: url(../images/);
+}
+
+.gif-landing {
+  height: 50px;
+  width: 80px;
 }
