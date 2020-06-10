@@ -18,19 +18,25 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container sign-page sign-position">
+
         <form method="POST" action="/signin">
-            <div class="sign-page">
+            {{!-- <div class="sign-page"> --}}
+            <div class="form-group sign-page">
                 <input type="email" name="email" id="user-email" placeholder="Name" class="create-form-item">
+            </div>
+            <div class="form-group sign-page">
                 <input type="password" name="password" id="user-pass" placeholder="Password" class="create-form-item">
+            </div>
+            <div class="form-group sign-page">
                 <button type="submit" class="btn btn-info filter-btn">Sign In</button>
             </div>
+            {{!-- </div> --}}
         </form>
-
-        {{#if errorMessage}}
-        <div class="error">{{errorMessage}}</div>
-        {{/if}}
     </div>
+    {{#if errorMessage}}
+    <div class="error">{{errorMessage}}</div>
+    {{/if}}
 </body>
 
 </html>

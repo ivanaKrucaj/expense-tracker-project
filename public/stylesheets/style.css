@@ -18,8 +18,11 @@ body {
 /* Signup page*/
 .sign-page {
     display: flex;
-    flex-direction: column;
-    width: 20%;
+    justify-content: center;
+}
+
+.sign-position {
+    margin-top: 7%;
 }
 
 
