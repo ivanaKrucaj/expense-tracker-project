@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const UserModel = require("../models/user.model");
 
 // SIGN UP ------------ GET
-router.get("/signup", (req, res) => res.render("auth/signup"));
+router.get("/signup", (req, res) => res.render("auth/signup", {layout: false }));
 
 // SIGN UP ------------ POST
 router.post("/signup", (req, res) => {
@@ -65,7 +65,7 @@ router.post("/signup", (req, res) => {
 });
 
 // SIGN IN ------------ GET
-router.get("/signin", (req, res) => res.render("auth/signin"));
+router.get("/signin", (req, res) => res.render("auth/signin", {layout: false }));
 
 // SIGN IN ------------ POST
 router.post("/signin", (req, res) => {
