@@ -16,11 +16,10 @@ body {
 
 /* Signup page*/
 .sign-page {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
-
 
 /* Home Page */
 .intro {
@@ -200,18 +199,40 @@ footer p {
 }
 
 /* Landing page*/
-.landing-container {
-  background-color: color;
+
+#landing {
+  background-image: url("../images/coins-img.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 0 20px;
 }
 
-.h4-landing {
-  list-style-image: url(../images/);
+.btn-xlg {
+  padding: 18px 28px;
+  font-size: 22px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin: 10px;
 }
 
 .gif-landing {
-  height: 50px;
-  width: 80px;
+  height: 85px;
+  width: 150px;
+  margin: 20px 0px;
+}
+
+.nav-landing {
+  background-color: #17a2b8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
 }
