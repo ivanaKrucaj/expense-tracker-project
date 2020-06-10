@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Merriweather Sans', sans-serif;
     margin: 0;
@@ -116,7 +117,8 @@ body {
 }
 
 /* Font Awesome Icon */
-.fontawesome {
+
+  .fontawesome {
     color: #808080;
     padding: 0 10px;
 }
@@ -185,3 +187,19 @@ footer {
 footer p {
     font-size: 0.7rem;
 }
+
+/* Landing page*/
+.landing-container {
+  background-color: color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.h4-landing {
+  list-style-image: url(../images/);
+}
+
+.gif-landing {
+  height: 50px;
+  width: 80px;
