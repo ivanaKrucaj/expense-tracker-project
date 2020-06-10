@@ -15,11 +15,14 @@ body {
     justify-content: center;
 }
 
-/* Signup page*/
+/* Signup and signup page*/
 .sign-page {
     display: flex;
-    flex-direction: column;
-    width: 20%;
+    justify-content: center;
+}
+
+.sign-position {
+    margin-top: 7%;
 }
 
 
