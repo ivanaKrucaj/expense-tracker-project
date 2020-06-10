@@ -1,28 +1,27 @@
-{{!-- Bootstrap --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-{{!-- Font Awesome Icons --}}
-<script src="https://kit.fontawesome.com/a337f7a40e.js" crossorigin="anonymous"></script>
+<div class="container">
+    <div class="intro">
+        <h3 class="user-greeting">Hello {{upperCaseName}}</h3>
+        <a href="/logout"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
+    </div>
 
 
-<div></div>
-    <h3>Hello {{upperCaseName}}</h3>
-    <a href="/logout"><i class="fas fa-sign-out-alt fontawesome"></i></a>
+    <div class="balance-filter row">
+        {{!-- Current balance --}}
+        <div class="current-balance col-lg-4">
+            <h2>{{currency}}</h2>
+            <small>Current balance</small>
+        </div>
 
-    {{!-- Current balance --}}
-    <h2>{{currency}}</h2>
-
-    {{!-- Filter --}}
-    <div class="row align-items-center justify-content-center">
-        <div class="flex-position">
-            <form action="/home" method="GET" class="flex-position">
-                <select id="inputType" class="form-control" name="type">
-                    <option>Type</option>
+        {{!-- Filter --}}
+        <div class="filter-position col-lg-8">
+            <form action="/home" method="GET">
+                <select id="inputType" class="form-item" name="type">
+                    <option value="" disabled selected hidden>Select type</option>
                     <option value="income">Income</option>
                     <option value="expense">Expense</option>
                 </select>
-                <select id="inputCategory" class="form-control" name="category">
-                    <option>Select category</option>
+                <select id="inputCategory" class="form-item" name="category">
+                    <option value="" disabled selected hidden>Select category</option>
                     <option value="food">Food</option>
                     <option value="transport">Transport</option>
                     <option value="accommodation">Accommodation</option>
@@ -33,58 +32,61 @@
                     <option value="clothing">Clothing</option>
                     <option value="education">Education</option>
                     <option value="healthcare">Healthcare</option>
+                    <option value="healthcare">Other</option>
                 </select>
-                <input type="date" class="form-control">
-                <button type="submit" class="btn btn-primary btn-block">Search</button>
+                {{!-- <input type="date" class="form-control"> --}}
+                <button type="submit" class="btn btn-info filter-btn">Search</button>
             </form>
 
             <form action="/home" method="GET">
-                <button type="submit" class="btn btn-primary btn-block">Reset</button>
+                <button type="submit" class="btn btn-outline-info filter-btn reset-btn">Reset</button>
             </form>
         </div>
-
     </div>
 
 
+
     {{!-- Transactions--}}
-    <h4>list of transactions</h4>
-    <div>
-        <a href="/createTrans">Create transaction</a>
-        {{#each reverseTrans}}
-        {{#if this.isExpenseType}}
-        <div class="red-bg">
-            <p>{{this.name}}</p>
-            <small>{{this.date}}</small>
-            <p>{{this.amount}}</p>
-            <a href="/editTrans/{{this._id}}">Edit</a>
-            <a href="/home/delete/{{this._id}}">Delete</a>
+    <h6 class="trans-title">Earlier this month</h6>
+
+    {{#each transactionsToDisplay}}
+    {{#if this.isExpenseType}}
+    <div class="transaction-container">
+        <div class="red-bg row">
+            <div class="col-6 col-name">
+                <p class="trans-name">{{this.name}}</p>
+                <small>{{this.formattedDate}}</small>
+            </div>
+            {{!-- <div class="col-lg-3">
+            </div> --}}
+            <div class="col-3 col-btn">
+                <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
+                <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
+            </div>
+            <div class="col-3 col-amount">
+                <p class="amount-red">- {{this.amount}}</p>
+            </div>
         </div>
+
         {{else}}
-        <div class="blue-bg">
-            <p>{{this.name}}</p>
-            <small>{{this.date}}</small>
-            <p>{{this.amount}}</p>
-            <a href="/editTrans/{{this._id}}">Edit</a>
-            <a href="/home/delete/{{this._id}}">Delete</a>
+
+        <div class="blue-bg row">
+            <div class="col-6 col-name">
+                <p class="trans-name">{{this.name}}</p>
+                <small>{{this.formattedDate}}</small>
+            </div>
+            {{!-- <div class="col-lg-3">
+            </div> --}}
+            <div class="col-3 col-btn">
+                <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
+                <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
+            </div>
+            <div class="col-3 col-amount">
+                <p class="amount-blue">+ {{this.amount}}</p>
+            </div>
         </div>
         {{/if}}
         {{/each}}
     </div>
 
-    {{!-- Navigation bar --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/home"><i class="fas fa-home fontawesome"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/diagrams"><i class="fas fa-chart-pie fontawesome"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 </div>

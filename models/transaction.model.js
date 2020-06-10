@@ -30,6 +30,7 @@ const transactionSchema = new Schema(
         "clothing",
         "education",
         "healthcare",
+        "other"
       ],
     },
     amount: {
@@ -45,9 +46,9 @@ const transactionSchema = new Schema(
       ref: "User",
     },
   },
-  // {
-  //   timestamps: true,
-  // }
+  {
+    timestamps: true,
+  }
 );
 
 const TransactionModel = model("Transaction", transactionSchema);
