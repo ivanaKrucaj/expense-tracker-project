@@ -19,14 +19,13 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    // transaction: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Transaction'
-    // }
     currency: {
       type: String,
       required: true
     },
+    googleID: {
+      type: String
+    }
   },
   {
     timestamps: true,

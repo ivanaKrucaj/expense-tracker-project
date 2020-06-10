@@ -6,12 +6,19 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const Chart = require("chart.js");
 
+// protected sites middleware
 router.use((req, res, next) => {
   if (req.session.loggedInUser) {
     next();
   } else {
     res.redirect("/signin");
   }
+});
+
+// logout middleware
+router.use(function (req, res, next) {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  next();
 });
 
 // HOME PAGE ------- GET
@@ -53,7 +60,7 @@ router.get("/home", (req, res) => {
       }, 0)
       const userData = req.session.loggedInUser
       // Current balance:
-      const currency = reduceTrans.toLocaleString('de-DE', { style: 'currency', currency: userData.currency});
+      const currency = reduceTrans.toLocaleString('de-DE', { style: 'currency', currency: userData.currency });
       // Greeting name uppercased:
       const upperCaseName = userData.username.slice(0, 1).toUpperCase() + userData.username.slice(1);
       // format the date
@@ -65,13 +72,13 @@ router.get("/home", (req, res) => {
             year: 'numeric' // "2019"
           });
         }
-        
+
         // tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
 
         return tr
       })
       // render all created objects into the home page:
-      res.render("home.hbs", {transactionsToDisplay, reduceTrans, userData, currency, upperCaseName});
+      res.render("home.hbs", { transactionsToDisplay, reduceTrans, userData, currency, upperCaseName });
 
     })
     .catch((err) => {
@@ -112,7 +119,6 @@ router.get("/editTrans/:id", (req, res) => {
   TransactionModel.findById(id)
     .then((transaction) => {
 
-      
       let isSelected = (type, expectedType) => {
         if (type === expectedType) {
           return 'selected'
@@ -121,12 +127,12 @@ router.get("/editTrans/:id", (req, res) => {
         }
       }
       const transactionTypes = [
-        {type: 'income', name: 'Income', selected: isSelected(transaction.type, 'income') },
-        {type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
+        { type: 'income', name: 'Income', selected: isSelected(transaction.type, 'income') },
+        { type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
       ]
+      const formattedDate = transaction.date.toISOString().substring(0, 10)
 
-      res.render("editTrans.hbs", {transactionTypes, transaction});
-
+      res.render("editTrans.hbs", { transactionTypes, transaction, formattedDate });
     })
     .catch(() => {
       res.send("Something went wrong.");
