@@ -44,6 +44,6 @@ server.on("error", (error) => {
   }
 });
 
-server.listen(process.env.PORT, () => {
-  console.log(`Listening on http://localhost:${process.env.PORT}`);
+server.listen(process.env.MONGODB_URI, () => {
+  console.log(`Listening on http://localhost:${process.env.MONGODB_URI}`);
 });
