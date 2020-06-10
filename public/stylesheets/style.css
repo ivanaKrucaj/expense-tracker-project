@@ -1,191 +1,194 @@
-
 body {
-    font-family: 'Merriweather Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #131313;
-    color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #131313;
+  color: white;
 }
 
 .container {
-    margin-top: 3%;
-    padding: 0 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  margin-top: 3%;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Home Page */
 .intro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 3% 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3% 0;
 }
 
 .user-greeting {
-    font-size: 40px;
-    font-weight: bold;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .fa-logout {
-    color: white;
+  color: white;
 }
 
 .fa-logout:hover {
-    color: #3d3d3d;
+  color: #3d3d3d;
 }
 
 .balance-filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .current-balance {
-    margin: 3% 0;
+  margin: 3% 0;
 }
 
 /* Filter */
 .filter-position {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .form-item {
-    padding: 2% 20px;
-    font-size: 14px;
-    font-weight: 300;
-    color: white;
-    border-radius: 8px;
-    background-color: #3d3d3d;
+  padding: 2% 20px;
+  font-size: 14px;
+  font-weight: 300;
+  color: white;
+  border-radius: 8px;
+  background-color: #3d3d3d;
 }
 
 /* Transactions */
 .trans-title {
-    margin: 5% 0 2%;
+  margin: 5% 0 2%;
 }
 
 .col-name {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .col-btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .col-amount {
-    display: flex;
-    justify-content: flex-end;
-    align-content: center;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
 }
 
-.red-bg, .blue-bg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #212121;
-    margin: 5px 0;
-    padding: 10px;
-    border: 2px solid #212121;
-    border-radius: 8px;
-    box-sizing: border-box;
-    position: relative;
+.red-bg,
+.blue-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #212121;
+  margin: 5px 0;
+  padding: 10px;
+  border: 2px solid #212121;
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .amount-red {
-    color: #c49084;
-    font-weight: bold;
-    font-size: 18px;
+  color: #c49084;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .amount-blue {
-    color: #506a77;
-    font-weight: bold;
-    font-size: 18px;
+  color: #506a77;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .trans-name {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
 }
 
 /* Font Awesome Icon */
 
-  .fontawesome {
-    color: #808080;
-    padding: 0 10px;
+.fontawesome {
+  color: #808080;
+  padding: 0 10px;
 }
 
 .fontawesome:hover {
-    color: white;
+  color: white;
 }
 
 .navbar-bg {
-    background-color: #212121;
-    width: 100%;
+  background-color: #212121;
+  width: 100%;
 }
 
 .navbar-items-position {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.fa-nav-home, .fa-nav-create {
-    color: white;
-    margin-right: 70px;
+.fa-nav-home,
+.fa-nav-create {
+  color: white;
+  margin-right: 70px;
 }
 
 .fa-nav-diagram {
-    color: white;
+  color: white;
 }
 
-.fa-nav-home:hover, .fa-nav-create:hover, .fa-nav-diagram:hover {
-    color: #3d3d3d;
+.fa-nav-home:hover,
+.fa-nav-create:hover,
+.fa-nav-diagram:hover {
+  color: #3d3d3d;
 }
 
 /* Create transaction page */
 .create-title {
-    font-size: 40px;
-    line-height: 1.5;
+  font-size: 40px;
+  line-height: 1.5;
 }
 
 .create-name {
-    display: inline;
-    margin-left: 5%;
+  display: inline;
+  margin-left: 5%;
 }
 
 .create-form-item {
-    padding: 1% 2%;
-    background-color: #3d3d3d;
-    border-color: #3d3d3d;
-    border-radius: 8px;
-    color: white;
+  padding: 1% 2%;
+  background-color: #3d3d3d;
+  border-color: #3d3d3d;
+  border-radius: 8px;
+  color: white;
 }
 
 .form-group {
-    margin-bottom: 3%;
+  margin-bottom: 3%;
 }
 
 /* Diagrams page */
 .diagram-page {
-    margin: 4%;
+  margin: 4%;
 }
 
 footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 7%;
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
 }
 
 footer p {
-    font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 
 /* Landing page*/
@@ -203,3 +206,4 @@ footer p {
 .gif-landing {
   height: 50px;
   width: 80px;
+}
