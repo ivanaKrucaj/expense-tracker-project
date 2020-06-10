@@ -14,11 +14,14 @@ body {
   justify-content: center;
 }
 
-/* Signup page*/
+/* Signup and signup page*/
 .sign-page {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-position {
+    margin-top: 7%;
 }
 
 /* Home Page */
@@ -126,14 +129,15 @@ body {
 /* Font Awesome Icon */
 
 .fontawesome {
-  color: #808080;
-  padding: 0 10px;
+    color: #808080;
+    padding: 0 10px;
 }
 
 .fontawesome:hover {
   color: white;
 }
 
+/* Navigation bar */
 .navbar-bg {
   background-color: #212121;
   width: 100%;
@@ -144,10 +148,10 @@ body {
   justify-content: center;
 }
 
-.fa-nav-home,
-.fa-nav-create {
-  color: white;
-  margin-right: 70px;
+
+.fa-nav-home, .fa-nav-create {
+    color: white;
+    margin-right: 200px;
 }
 
 .fa-nav-diagram {
@@ -195,7 +199,8 @@ footer {
 }
 
 footer p {
-  font-size: 0.7rem;
+    font-size: 0.7rem;
+    color: #5d5d5d;
 }
 
 /* Landing page*/
