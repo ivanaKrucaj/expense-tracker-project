@@ -1,4 +1,6 @@
 
+Chart.defaults.global.legend.labels.usePointStyle = true;
+
 window.onload = () => {
   let api_url = 'http://localhost:3000/diagramsJson';
   reloadChart(api_url);
@@ -29,23 +31,28 @@ const drawChart = data => {
       datasets: [
         {
           label: "Stock Chart",
-          borderColor: "#131313",
+          borderColor: ['#6aa2b2', '#c3d1a2', "#dec0c1", "#f2ece0", "#c49084", "#e79084", "#d8d8da", "#506a77", "#9fc8c0", "#d6b28e", "#c4c4c6"],
           backgroundColor: ['#6aa2b2', '#c3d1a2', "#dec0c1", "#f2ece0", "#c49084", "#e79084", "#d8d8da", "#506a77", "#9fc8c0", "#d6b28e", "#c4c4c6"],
-          data: stockPrice
+          data: stockPrice,
+          borderWidth: 3,
+          
         }
-      ],
+      ]},
       options: {
-        // legend: {
-        //   display: true,
-        //   labels: {
-        //     fontSize: 16,
-        //     fontColor: black,
-        //     padding: 20
-        //   }
-        // },
+        title: {
+          display: true,
+          text: "Category chart",
+          position: 'top',
+          fontSize: 30
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          fontSize: 16
+        },
         fill: false
       }
     }
-  });
+  );
 };
 
