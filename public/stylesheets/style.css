@@ -129,7 +129,7 @@ body {
 
 /* Font Awesome Icon */
 
-  .fontawesome {
+.fontawesome {
     color: #808080;
     padding: 0 10px;
 }
@@ -138,6 +138,7 @@ body {
     color: white;
 }
 
+/* Navigation bar */
 .navbar-bg {
     background-color: #212121;
     width: 100%;
@@ -150,7 +151,7 @@ body {
 
 .fa-nav-home, .fa-nav-create {
     color: white;
-    margin-right: 70px;
+    margin-right: 200px;
 }
 
 .fa-nav-diagram {
@@ -197,6 +198,7 @@ footer {
 
 footer p {
     font-size: 0.7rem;
+    color: #5d5d5d;
 }
 
 /* Landing page*/
@@ -214,3 +216,4 @@ footer p {
 .gif-landing {
   height: 50px;
   width: 80px;
+}
