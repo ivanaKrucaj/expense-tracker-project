@@ -1,4 +1,4 @@
-# expense-tracker-project
+# Show Me the Money
 
 ## Description
 The expense tracker app allows users to add transactions (expenses or income) by adding unique names to them, picking different categories, adding the amount in a currency they have chosen, etc. The user can also explore diagrams of their expenses/incomes by months and by category.
