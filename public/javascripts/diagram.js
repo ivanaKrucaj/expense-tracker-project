@@ -2,7 +2,7 @@
 Chart.defaults.global.legend.labels.usePointStyle = true;
 
 window.onload = () => {
-  let api_url = 'http://localhost:3000/diagramsJson';
+  let api_url = process.env.MONGODB_URI;
   reloadChart(api_url);
 };
 
@@ -39,16 +39,19 @@ const drawChart = data => {
         }
       ]},
       options: {
-        title: {
-          display: true,
-          text: "Category chart",
-          position: 'top',
-          fontSize: 30
-        },
         legend: {
           display: true,
           position: 'bottom',
-          fontSize: 16
+          fontSize: 16,
+          labels: {
+            padding: 15
+          }
+        },
+        layout: {
+          padding: {
+            top: 0,
+            bottom: 30
+          }
         },
         fill: false
       }
