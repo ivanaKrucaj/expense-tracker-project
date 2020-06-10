@@ -1,6 +1,7 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
+const passport = require("passport");
 
 //A library that helps us log the requests in the console
 const logger = require("morgan");
@@ -28,8 +29,37 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 
-// setting up the middleware to let it know where to find the favicon icon
-// app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
+// setting up social login (Google) middleware:
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+ 
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: "761570140059-mmuar714shr10lfpi6honv4vkmq78ads.apps.googleusercontent.com",
+      clientSecret: "oHjPV7r4BMOp8YlbBR6cdGJN",
+      callbackURL: "/google/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+      console.log("Google account details:", profile);
+ 
+      User.findOne({ googleID: profile.id })
+        .then(user => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+ 
+          User.create({ googleID: profile.id })
+            .then(newUser => {
+              done(null, newUser);
+            })
+            .catch(err => done(err)); // closes User.create()
+        })
+        .catch(err => done(err)); // closes User.findOne()
+    }
+  )
+);
 
 // Sets up morgan in our middleware so that we can see the requests getting logged
 app.use(logger("dev"));

@@ -31,7 +31,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 3% 0;
+    margin: 12% 0 3%;
 }
 
 .user-greeting {
@@ -110,13 +110,13 @@ body {
 }
 
 .amount-red {
-    color: #c49084;
+    color: #dec0c1;
     font-weight: bold;
     font-size: 18px;
 }
 
 .amount-blue {
-    color: #506a77;
+    color: #6aa2b2;
     font-weight: bold;
     font-size: 18px;
 }

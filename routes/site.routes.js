@@ -14,6 +14,12 @@ router.use((req, res, next) => {
   }
 });
 
+router.use(function(req, res, next) {
+  if (!req.session.loggedInUser)
+      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  next();
+});
+
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
   console.log(req.query);

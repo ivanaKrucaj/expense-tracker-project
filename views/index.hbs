@@ -10,6 +10,12 @@
 
         <a href="/signup"><button type="button" class="btn btn-primary btn-lg">Sign up</button></a>
         <a href="/signin"><button type="button" class="btn btn-secondary btn-lg">Sign in</button></a>
+        {{#unless user}}
+        Home page
+        <div>
+            <a href="/auth/google">Login With Google</a>
+        </div>
+        {{/unless}}
     </div>
 </div>
 </div>
