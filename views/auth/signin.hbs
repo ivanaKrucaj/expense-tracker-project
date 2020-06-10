@@ -1,11 +1,36 @@
-<form method="POST" action="/signin">
-    <label for="user-email">Email</label>
-    <input type="email" name="email" id="user-email" placeholder="marsh">
-    <label for="user-pass">Password</label>
-    <input type="password" name="password" id="user-pass" placeholder="We know it's 1234">
-    <button type="submit">Sign In</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
 
-{{#if errorMessage}}
-<div class="error">{{errorMessage}}</div>
-{{/if}}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Me the Money</title>
+    {{!-- Bootstrap --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {{!-- Google Fonts --}}
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;700;800&display=swap"
+        rel="stylesheet">
+    {{!-- Font Awesome Icons --}}
+    <script src="https://kit.fontawesome.com/a337f7a40e.js" crossorigin="anonymous"></script>
+    {{!-- CSS Stylesheet --}}
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST" action="/signin">
+            <div class="sign-page">
+                <input type="email" name="email" id="user-email" placeholder="Name" class="create-form-item">
+                <input type="password" name="password" id="user-pass" placeholder="Password" class="create-form-item">
+                <button type="submit" class="btn btn-info filter-btn">Sign In</button>
+            </div>
+        </form>
+
+        {{#if errorMessage}}
+        <div class="error">{{errorMessage}}</div>
+        {{/if}}
+    </div>
+</body>
+
+</html>
