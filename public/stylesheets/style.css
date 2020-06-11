@@ -214,7 +214,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }
 
 .btn-xlg {
@@ -234,10 +234,62 @@ footer p {
 }
 
 .nav-landing {
-  background-color: #17a2b8;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 0 20px;
+  background: rgba(19, 19, 19, 0.5);
+}
+
+.google-btn {
+    background-color: #4285f3;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 7%;
+}
+
+.google-btn:hover {
+    text-decoration: none;
+    color: #3d3d3d;
+}
+
+.google-img {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.landing-btn {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5%;
+    border-radius: 7px;
+}
+
+.header-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.header-tom {
+    display: flex;
+    justify-content: center;
+}
+
+.quote {
+    background: rgba(0, 0, 0, 0.8);
+    margin-bottom: 5%;
+    padding: 1%;
+    border-radius: 7px;
+}
+
+.landing-footer {
+    margin-top: 1%;
 }

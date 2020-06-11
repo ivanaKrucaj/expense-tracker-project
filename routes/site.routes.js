@@ -8,6 +8,9 @@ const Chart = require("chart.js");
 
 // protected sites middleware
 router.use((req, res, next) => {
+  if (req.session.passport) {
+    req.session.loggedInUser = req.session.passport.user
+  }
   if (req.session.loggedInUser) {
     next();
   } else {
@@ -130,6 +133,8 @@ router.get("/editTrans/:id", (req, res) => {
         { type: 'income', name: 'Income', selected: isSelected(transaction.type, 'income') },
         { type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
       ]
+
+      // populate date:
       const formattedDate = transaction.date.toISOString().substring(0, 10)
 
       res.render("editTrans.hbs", { transactionTypes, transaction, formattedDate });

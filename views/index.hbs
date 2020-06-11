@@ -18,15 +18,36 @@
 </head>
 
 <body>
-    <nav class="nav-landing">
-        <h1>Show me the money</h1>
-        <h6>Expense tracker to analyse your budget and get your &#36;&#36;&#36 together</h6>
-        <img class='gif-landing' src="https://media.giphy.com/media/9HQRIttS5C4Za/giphy.gif"
-            alt="Too bad, can't see Tom Cruise GIF">
+    <nav class="nav-landing row">
+        <div class="col-4 header-div">
+            <h1>&#36;how Me the Money</h1>
+            <p>Analyse your budget and get your &#36;&#36;&#36 together</p>
+        </div>
+        <div class="col-4 header-tom">
+            <img class='gif-landing' src="https://media.giphy.com/media/9HQRIttS5C4Za/giphy.gif"
+                alt="Too bad, can't see Tom Cruise GIF">
+        </div>
     </nav>
+
+    
+
     <header id="landing">
-        <a href="/signup"> <button type="submit" class="btn btn-info filter-btn btn-xlg ">Sign up</button></a>
-        <a href="/signin"><button type="submit" class="btn btn-outline-info filter-btn btn-xlg">Sign in</button></a>
-        <a href="/auth/google">Login With Google</a>
+         <div class="quote">
+         <aside>
+             <p>This app shows me my money !</p>
+            <small>- Tom Cruise</small>
+         </aside>
+    </div>
+        <div class="landing-btn">
+            <a href="/signup"> <button type="submit" class="btn btn-info filter-btn btn-xlg ">Sign up</button></a>
+            <a href="/signin"><button type="submit" class="btn btn-outline-info filter-btn btn-xlg">Sign in</button></a>
+            <a href="/auth/google" class="google-btn"> <img src="/images/google-login.png" alt="google-logo"
+                    class="google-img">Signin With Google</a>
+        </div>
     </header>
+
+
+    <footer class="landing-footer">
+        <p>&copy; &#36;how-Me-the-Money-Team 2020</p>
+    </footer>
 </body>

@@ -7,8 +7,7 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: [true, "Please enter username"],
-      unique: true
+      required: [true, "Please enter username"]
     },
     email: {
       type: String,
@@ -17,7 +16,7 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: true
+      required: false
     },
     currency: {
       type: String,
