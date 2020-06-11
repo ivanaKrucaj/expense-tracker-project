@@ -57,9 +57,8 @@ Task definition in order of priority
 
 
 ### Git
-URls for the project repo and deploy
-[GitHub Repo](https://github.com/ivanaKrucaj/expense-tracker-project/)
-[Heroku](https://show-me-the-money-tracker.herokuapp.com/)
+- [GitHub Repo](https://github.com/ivanaKrucaj/expense-tracker-project/)
+- [Heroku](https://show-me-the-money-tracker.herokuapp.com/)
 
 
 ### Slides
