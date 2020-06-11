@@ -8,6 +8,9 @@ const Chart = require("chart.js");
 
 // protected sites middleware
 router.use((req, res, next) => {
+  if (req.session.passport) {
+    req.session.loggedInUser = req.session.passport.user;
+  }
   if (req.session.loggedInUser) {
     next();
   } else {
@@ -32,10 +35,10 @@ router.get("/home", (req, res) => {
     mongooseQuery.category = req.query.category;
   }
 
-  // this displays user(id) transactions on home page:
+  // displays user(id) transactions on home page:
   TransactionModel.find(mongooseQuery)
     .then((transaction) => {
-      // this adds property to transaction object so we can filter income and expense by color on home page
+      // adds property to transaction object so we can filter income and expenses by bg color on home page:
       let newTrans = transaction.filter((element) => {
         if (element.type == "expense") {
           element.isExpenseType = true;
@@ -75,11 +78,9 @@ router.get("/home", (req, res) => {
           });
         }
 
-        // tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
-
         return tr;
       });
-      // this renders all created objects into the home page:
+      // renders all created objects into the home page:
       res.render("home.hbs", {
         transactionsToDisplay,
         reduceTrans,
@@ -141,12 +142,73 @@ router.get("/editTrans/:id", (req, res) => {
           selected: isSelected(transaction.type, "expense"),
         },
       ];
+
+      const transactionCategories = [
+        {
+          category: "food",
+          name: "Food",
+          selected: isSelected(transaction.category, "food"),
+        },
+        {
+          category: "transport",
+          name: "Transport",
+          selected: isSelected(transaction.category, "transport"),
+        },
+        {
+          category: "accommodation",
+          name: "Accommodation",
+          selected: isSelected(transaction.category, "accommodation"),
+        },
+        {
+          category: "salary",
+          name: "Salary",
+          selected: isSelected(transaction.category, "salary"),
+        },
+        {
+          category: "travel",
+          name: "Travel",
+          selected: isSelected(transaction.category, "travel"),
+        },
+        {
+          category: "bills",
+          name: "Bills",
+          selected: isSelected(transaction.category, "bills"),
+        },
+        {
+          category: "entertainment",
+          name: "Entertainment",
+          selected: isSelected(transaction.category, "entertainment"),
+        },
+        {
+          category: "clothing",
+          name: "Clothing",
+          selected: isSelected(transaction.category, "clothing"),
+        },
+        {
+          category: "education",
+          name: "Education",
+          selected: isSelected(transaction.category, "education"),
+        },
+        {
+          category: "healthcare",
+          name: "Healthcare",
+          selected: isSelected(transaction.category, "healthcare"),
+        },
+        {
+          category: "other",
+          name: "Other",
+          selected: isSelected(transaction.category, "other"),
+        },
+      ];
+
+      // populate date:
       const formattedDate = transaction.date.toISOString().substring(0, 10);
 
       res.render("editTrans.hbs", {
         transactionTypes,
         transaction,
         formattedDate,
+        transactionCategories,
       });
     })
     .catch(() => {
@@ -202,6 +264,10 @@ router.get("/diagramsJson", (req, res) => {
     .catch((err) => {
       res.send("No charts for you", err);
     });
+});
+
+router.get("/error", (req, res) => {
+  res.render("error.hbs", { layout: false });
 });
 
 module.exports = router;

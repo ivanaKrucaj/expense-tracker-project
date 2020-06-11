@@ -14,6 +14,11 @@ body {
   justify-content: center;
 }
 
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
 /* Signup and signup page*/
 .sign-page {
   display: flex;
@@ -213,7 +218,7 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }
 
 .btn-xlg {
@@ -229,14 +234,85 @@ footer p {
 .gif-landing {
   height: 80px;
   width: 150px;
-  margin: 20px 0px;
+  margin: 20px 15px;
+  border-radius: 7px;
 }
 
 .nav-landing {
   background: "rgba (23, 162, 184, 0.6)";
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 20px 20px 10px;
+  background: rgba(19, 19, 19, 0.5);
+}
+
+.google-btn {
+  background-color: #4285f3;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 7%;
+}
+
+.google-btn:hover {
+  text-decoration: none;
+  color: #3d3d3d;
+}
+
+.google-img {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.landing-btn {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 3% 5%;
+  border-radius: 7px;
+}
+
+.header-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.header-tom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-footer {
+  margin-top: 1%;
+}
+
+/* Error page */
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  color: white;
+}
+
+.error-page h2 {
+  text-align: center;
+  margin-bottom: 7%;
+}
+
+.error-img {
+  height: 450px;
+  border-radius: 50%;
+}
+
+.error-page p {
+  text-align: center;
+  margin-top: 5%;
 }

@@ -1,10 +1,6 @@
 const { Schema, model } = require("mongoose");
 const UserModel = require("../models/user.model");
 
-// npm package for currency (optional):
-// require("mongoose-currency").loadType(mongoose);
-// var Currency = mongoose.Types.Currency;
-
 const transactionSchema = new Schema(
   {
     type: {
