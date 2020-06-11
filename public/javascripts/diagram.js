@@ -35,7 +35,6 @@ const drawChart = data => {
           backgroundColor: ['#6aa2b2', '#c3d1a2', "#dec0c1", "#f2ece0", "#c49084", "#e79084", "#d8d8da", "#506a77", "#9fc8c0", "#d6b28e", "#c4c4c6"],
           data: stockPrice,
           borderWidth: 3,
-          
         }
       ]},
       options: {
