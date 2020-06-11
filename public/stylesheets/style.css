@@ -14,6 +14,11 @@ body {
   justify-content: center;
 }
 
+.center-container {
+    display: flex;
+    justify-content: center;
+}
+
 /* Signup and signup page*/
 .sign-page {
     display: flex;
@@ -230,7 +235,8 @@ footer p {
 .gif-landing {
   height: 85px;
   width: 150px;
-  margin: 20px 0px;
+  margin: 20px 15px;
+  border-radius: 7px;
 }
 
 .nav-landing {
@@ -238,7 +244,7 @@ footer p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 20px 20px 10px;
   background: rgba(19, 19, 19, 0.5);
 }
 
@@ -268,7 +274,7 @@ footer p {
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.7);
-    padding: 5%;
+    padding: 3% 5%;
     border-radius: 7px;
 }
 
@@ -281,13 +287,7 @@ footer p {
 .header-tom {
     display: flex;
     justify-content: center;
-}
-
-.quote {
-    background: rgba(0, 0, 0, 0.8);
-    margin-bottom: 5%;
-    padding: 1%;
-    border-radius: 7px;
+    align-items: center;
 }
 
 .landing-footer {

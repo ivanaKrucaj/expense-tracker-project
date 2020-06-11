@@ -2,8 +2,7 @@
 Chart.defaults.global.legend.labels.usePointStyle = true;
 
 window.onload = () => {
-  let api_url = 'http://localhost:3000/diagramsJson'
-  // 'https://show-me-the-money-tracker.herokuapp.com/diagramsJson'
+  let api_url = 'https://show-me-the-money-tracker.herokuapp.com/diagramsJson';
   reloadChart(api_url);
 };
 
