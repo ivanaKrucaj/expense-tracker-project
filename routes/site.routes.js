@@ -26,7 +26,6 @@ router.use(function (req, res, next) {
 
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
-  console.log(req.query);
 
   // define queries for filter feature:
   let mongooseQuery = {};
@@ -37,10 +36,10 @@ router.get("/home", (req, res) => {
     mongooseQuery.category = req.query.category;
   }
 
-  // display user(id) transactions on home page:
+  // displays user(id) transactions on home page:
   TransactionModel.find(mongooseQuery)
     .then((transaction) => {
-      // add property to transaction object so we can filter income and expenses by bg color on home page:
+      // adds property to transaction object so we can filter income and expenses by bg color on home page:
       let newTrans = transaction.filter((element) => {
         if (element.type == "expense") {
           element.isExpenseType = true;
@@ -76,16 +75,13 @@ router.get("/home", (req, res) => {
           });
         }
 
-        // tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
-
         return tr
       })
-      // render all created objects into the home page:
+      // renders all created objects into the home page:
       res.render("home.hbs", { transactionsToDisplay, reduceTrans, userData, currency, upperCaseName });
 
     })
     .catch((err) => {
-      console.log(err);
       res.send("Something went terribly wrong.", err);
     });
 });
@@ -118,7 +114,6 @@ router.post("/createTrans", (req, res) => {
 // EDIT TRANSACTION ---------- GET
 router.get("/editTrans/:id", (req, res) => {
   let id = req.params.id;
-  console.log(id);
   TransactionModel.findById(id)
     .then((transaction) => {
 
@@ -207,6 +202,10 @@ router.get("/diagramsJson", (req, res) => {
     .catch((err) => {
       res.send("No charts for you", err);
     });
+});
+
+router.get('/error', (req,res) => {
+  res.render('error.hbs', {layout: false })
 });
 
 module.exports = router;
