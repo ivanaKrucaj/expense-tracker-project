@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const UserModel = require('../models/user.model')
+const UserModel = require("../models/user.model");
 
 // npm package for currency (optional):
 // require("mongoose-currency").loadType(mongoose);
@@ -30,12 +30,13 @@ const transactionSchema = new Schema(
         "clothing",
         "education",
         "healthcare",
-        "other"
+        "other",
       ],
     },
     amount: {
       type: Number,
       required: [true, "Please enter an amount"],
+      min: 0,
     },
     date: {
       type: Date,
@@ -52,4 +53,4 @@ const transactionSchema = new Schema(
 );
 
 const TransactionModel = model("Transaction", transactionSchema);
-module.exports = TransactionModel
+module.exports = TransactionModel;

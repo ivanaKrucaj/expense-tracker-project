@@ -2,7 +2,11 @@
 <html>
 
 <head>
+
+    {{!-- import and use someone's code --}}
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    {{!-- import and use CHARTJS --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 </head>
@@ -10,14 +14,19 @@
 <body>
     <div class="diagram-page container">
         <div class="intro">
-            <h2>Statistics</h2>
+            <h2>Expenses</h2>
             <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
         </div>
-
         <canvas id="pieChart" style="display: block; height: 179px; width: 358px;" width="300" height="120"></canvas>
+        <br>
+        <div class="intro">
+            <h2>Expense vs Income</h2>
+            <canvas id="columnChart" style="display: block; height: 179px; width: 358px;" width="300"
+                height="120"></canvas>
+        </div>
     </div>
-
-    <script src="/javascripts/diagram.js"></script>
+    <script src="/javascripts/pieChart.js"></script>
+    <script src="/javascripts/columnChart.js"></script>
 </body>
 
 </html>
