@@ -293,3 +293,26 @@ footer p {
 .landing-footer {
     margin-top: 1%;
 }
+
+/* Error page */
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    color: white;
+}
+
+.error-page h2 {
+    text-align: center;
+    margin-bottom: 7%;
+}
+
+.error-img {
+    height:450px;
+    border-radius: 50%;
+}
+
+.error-page p{
+    text-align: center;
+    margin-top: 5%
+}
