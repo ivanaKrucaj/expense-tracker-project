@@ -16,20 +16,20 @@ body {
 
 /* Signup and signup page*/
 .sign-page {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .sign-position {
-    margin-top: 7%;
+  margin-top: 7%;
 }
 
 /* Home Page */
 .intro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 12% 0 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12% 0 3%;
 }
 
 .user-greeting {
@@ -94,8 +94,7 @@ body {
   align-content: center;
 }
 
-.red-bg,
-.blue-bg {
+.transaction-bg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,8 +128,8 @@ body {
 /* Font Awesome Icon */
 
 .fontawesome {
-    color: #808080;
-    padding: 0 10px;
+  color: #808080;
+  padding: 0 10px;
 }
 
 .fontawesome:hover {
@@ -148,10 +147,10 @@ body {
   justify-content: center;
 }
 
-
-.fa-nav-home, .fa-nav-create {
-    color: white;
-    margin-right: 200px;
+.fa-nav-home,
+.fa-nav-create {
+  color: white;
+  margin-right: 200px;
 }
 
 .fa-nav-diagram {
@@ -199,8 +198,8 @@ footer {
 }
 
 footer p {
-    font-size: 0.7rem;
-    color: #5d5d5d;
+  font-size: 0.7rem;
+  color: #5d5d5d;
 }
 
 /* Landing page*/
@@ -228,13 +227,13 @@ footer p {
 }
 
 .gif-landing {
-  height: 85px;
+  height: 80px;
   width: 150px;
   margin: 20px 0px;
 }
 
 .nav-landing {
-  background-color: #17a2b8;
+  background: "rgba (23, 162, 184, 0.6)";
   display: flex;
   flex-direction: row;
   justify-content: space-around;

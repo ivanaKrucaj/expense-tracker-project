@@ -15,17 +15,15 @@ router.use((req, res, next) => {
   }
 });
 
-// logout middleware
+// logout middleware, connected whith "destroys session"
 router.use(function (req, res, next) {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
   next();
 });
 
 // HOME PAGE ------- GET
 router.get("/home", (req, res) => {
-  console.log(req.query);
-
-  // define queries for filter feature:
+  //This defines queries for filter feature:
   let mongooseQuery = {};
   if (req.query.type) {
     mongooseQuery.type = req.query.type;
@@ -34,55 +32,63 @@ router.get("/home", (req, res) => {
     mongooseQuery.category = req.query.category;
   }
 
-  // display user(id) transactions on home page:
+  // this displays user(id) transactions on home page:
   TransactionModel.find(mongooseQuery)
     .then((transaction) => {
-      // add property to transaction object so we can filter income and expenses by bg color on home page:
+      // this adds property to transaction object so we can filter income and expense by color on home page
       let newTrans = transaction.filter((element) => {
         if (element.type == "expense") {
           element.isExpenseType = true;
         } else {
           element.isExpenseType = false;
         }
-
         return element.user_id == req.session.loggedInUser._id;
       });
+      // this displays the transactions by the earliest created in home page
       let reverseTrans = newTrans.reverse();
-      // calculate current balance:
+      // this calculates current balance:
       let reduceTrans = reverseTrans.reduce((acc, value) => {
         if (value.type == "income") {
           return acc + value.amount;
         } else {
           return acc - value.amount;
         }
-
-        return acc
-      }, 0)
-      const userData = req.session.loggedInUser
-      // Current balance:
-      const currency = reduceTrans.toLocaleString('de-DE', { style: 'currency', currency: userData.currency });
+        return acc;
+      }, 0);
+      const userData = req.session.loggedInUser;
+      // this displays current balance with currency and the coma:
+      const currency = reduceTrans.toLocaleString("de-DE", {
+        style: "currency",
+        currency: userData.currency,
+      });
       // Greeting name uppercased:
-      const upperCaseName = userData.username.slice(0, 1).toUpperCase() + userData.username.slice(1);
-      // format the date
+      const upperCaseName =
+        userData.username.slice(0, 1).toUpperCase() +
+        userData.username.slice(1);
+      // this formats the date in a nice way
       const transactionsToDisplay = reverseTrans.map((tr) => {
         if (tr.date) {
-          tr.formattedDate = tr.date.toLocaleString('en-GB', {
-            month: 'long', // "June"
-            day: '2-digit', // "01"
-            year: 'numeric' // "2019"
+          tr.formattedDate = tr.date.toLocaleString("en-GB", {
+            month: "long", // "June"
+            day: "2-digit", // "01"
+            year: "numeric", // "2019"
           });
         }
 
         // tr.uppercaseTransName = tr.name.slice(0,1).toUpperCase() + tr.name.slice(1)
 
-        return tr
-      })
-      // render all created objects into the home page:
-      res.render("home.hbs", { transactionsToDisplay, reduceTrans, userData, currency, upperCaseName });
-
+        return tr;
+      });
+      // this renders all created objects into the home page:
+      res.render("home.hbs", {
+        transactionsToDisplay,
+        reduceTrans,
+        userData,
+        currency,
+        upperCaseName,
+      });
     })
     .catch((err) => {
-      console.log(err);
       res.send("Something went terribly wrong.", err);
     });
 });
@@ -95,7 +101,6 @@ router.get("/createTrans", (req, res) => {
 // CREATE TRANSACTION ---------- POST
 router.post("/createTrans", (req, res) => {
   const { type, name, category, amount, date } = req.body;
-  // console.log(req.session.loggedInUser);
   TransactionModel.create({
     type: type,
     name: name,
@@ -115,24 +120,34 @@ router.post("/createTrans", (req, res) => {
 // EDIT TRANSACTION ---------- GET
 router.get("/editTrans/:id", (req, res) => {
   let id = req.params.id;
-  console.log(id);
   TransactionModel.findById(id)
     .then((transaction) => {
-
       let isSelected = (type, expectedType) => {
         if (type === expectedType) {
-          return 'selected'
+          return "selected";
         } else {
-          return ''
+          return "";
         }
-      }
+      };
       const transactionTypes = [
-        { type: 'income', name: 'Income', selected: isSelected(transaction.type, 'income') },
-        { type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
-      ]
-      const formattedDate = transaction.date.toISOString().substring(0, 10)
+        {
+          type: "income",
+          name: "Income",
+          selected: isSelected(transaction.type, "income"),
+        },
+        {
+          type: "expense",
+          name: "Expense",
+          selected: isSelected(transaction.type, "expense"),
+        },
+      ];
+      const formattedDate = transaction.date.toISOString().substring(0, 10);
 
-      res.render("editTrans.hbs", { transactionTypes, transaction, formattedDate });
+      res.render("editTrans.hbs", {
+        transactionTypes,
+        transaction,
+        formattedDate,
+      });
     })
     .catch(() => {
       res.send("Something went wrong.");
@@ -142,7 +157,6 @@ router.get("/editTrans/:id", (req, res) => {
 // EDIT TRANSACTION ---------- POST
 router.post("/editTrans/:id", (req, res) => {
   let id = req.params.id;
-  console.log("The id is", id);
 
   const { type, name, category, amount, date } = req.body;
   TransactionModel.findByIdAndUpdate(id, {

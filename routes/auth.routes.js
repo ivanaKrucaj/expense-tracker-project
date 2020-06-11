@@ -4,12 +4,13 @@ const bcrypt = require("bcryptjs");
 const UserModel = require("../models/user.model");
 
 // SIGN UP ------------ GET
-router.get("/signup", (req, res) => res.render("auth/signup", {layout: false }));
+router.get("/signup", (req, res) =>
+  res.render("auth/signup", { layout: false })
+);
 
 // SIGN UP ------------ POST
 router.post("/signup", (req, res) => {
   const { username, email, password, currency } = req.body;
-  console.log(username, email, password, currency);
 
   if (!username || !email || !password || !currency) {
     res.status(500).render("auth/signup.hbs", {
@@ -28,6 +29,7 @@ router.post("/signup", (req, res) => {
     return;
   }
 
+  // Setting up the password requirements
   //   const myPassRegex = new RegExp(
   //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
   //   );
@@ -39,8 +41,9 @@ router.post("/signup", (req, res) => {
   //     return;
   //   }
 
+  // generating bcrypt password
   bcrypt.genSalt(12).then((salt) => {
-    console.log("Salt: ", salt);
+  
     bcrypt.hash(password, salt).then((password) => {
       UserModel.create({ email, username, password, currency })
         .then((userData) => {
@@ -65,7 +68,9 @@ router.post("/signup", (req, res) => {
 });
 
 // SIGN IN ------------ GET
-router.get("/signin", (req, res) => res.render("auth/signin", {layout: false }));
+router.get("/signin", (req, res) =>
+  res.render("auth/signin", { layout: false })
+);
 
 // SIGN IN ------------ POST
 router.post("/signin", (req, res) => {
@@ -76,6 +81,7 @@ router.post("/signin", (req, res) => {
     });
     return;
   }
+  // Setting up email address requirements
   const myRegex = new RegExp(
     /^[a-z0-9](?!.*?[^\na-z0-9]{2})[^\s@]+@[^\s@]+\.[^\s@]+[a-z0-9]$/
   );
@@ -86,18 +92,17 @@ router.post("/signin", (req, res) => {
     return;
   }
 
-  // Find if the user exists in the database
+  // Finding if the user exists in the database
   UserModel.findOne({ email })
     .then((userData) => {
-      //check if passwords match
+      //checking if password is matching
       bcrypt
         .compare(password, userData.password)
         .then((doesItMatch) => {
           //if it matches
           if (doesItMatch) {
-            // req.session is the special object that is available to you
+            // requesting the logged in user and all of its info so you can use it
             req.session.loggedInUser = userData;
-            //req.session.greet = 'Hola';
             res.redirect("/home");
           }
           //if passwords do not match
@@ -115,7 +120,7 @@ router.post("/signin", (req, res) => {
           return;
         });
     })
-    //throw an error if the user does not exists
+    //throws an error if the user does not exist
     .catch(() => {
       res.status(500).render("auth/signin.hbs", {
         errorMessage: "Email is not registered",
@@ -126,7 +131,7 @@ router.post("/signin", (req, res) => {
 
 router.get("/logout", (req, res, next) => {
   req.session.destroy((err) => {
-    // cannot access session here
+    // this destroys the session so user can not access it anymore
     res.redirect("/signin");
   });
 });
