@@ -23,48 +23,61 @@ const drawChart = (data) => {
   console.log(finalData);
   let stockLabels = Object.keys(finalData);
   let stockPrice = Object.values(finalData);
-  let ctx = document.getElementById("myChart").getContext("2d");
-  let myColumnChart = new ColumnChart(ctx, {
-  type: "Column",
-  data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-  datasets: [
-  {
-    label: 'my second data set',
-    fill: true,
-    backgroundColor = 'rgba(0, 0, 0, 0.1)',
-    borderCapStyle='butt',
-    borderColor	='rgba(75, 72, 192, 1)',
-    borderDash=	[],
-    borderDashOffset=	0.0,
-    borderJoinStyle='miter',
-    pointBorderColor="rgba(75, 72, 192, 1)",
-    pointBackgroundColor="#fff",
-    pointBorderWidth=1,
-    pointHoverBackgroundColor="rgba(75, 72, 192, 1)",
-    pointHoverBorderColor= "rgba(220, 220, 220, 1)",
-    pointHoverBorderWidth	=2,
-    pointHoverRadius=5,
-    pointRadius=1,
-    pointHitRadius=10,
-    data: [65, 59, 80, 81, 56, 55, 40],
-  }
-  ]},
-  options: {
-    legend: {
-      display: true,
-      position: "bottom",
-      fontSize: 16,
-      labels: {
-        padding: 15,
-      },
+  let ctx = document.getElementById("columnChart").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "column",
+    data: {
+      labels: stockLabels,
+      datasets: [
+        {
+          label: "Stock Chart",
+          borderColor: [
+            "#6aa2b2",
+            "#c3d1a2",
+            "#dec0c1",
+            "#f2ece0",
+            "#c49084",
+            "#e79084",
+            "#d8d8da",
+            "#506a77",
+            "#9fc8c0",
+            "#d6b28e",
+            "#c4c4c6",
+          ],
+          backgroundColor: [
+            "#6aa2b2",
+            "#c3d1a2",
+            "#dec0c1",
+            "#f2ece0",
+            "#c49084",
+            "#e79084",
+            "#d8d8da",
+            "#506a77",
+            "#9fc8c0",
+            "#d6b28e",
+            "#c4c4c6",
+          ],
+          data: stockPrice,
+          borderWidth: 3,
+        },
+      ],
     },
-    layout: {
-      padding: {
-        top: 0,
-        bottom: 30,
+    options: {
+      legend: {
+        display: true,
+        position: "bottom",
+        fontSize: 16,
+        labels: {
+          padding: 15,
+        },
       },
+      layout: {
+        padding: {
+          top: 0,
+          bottom: 30,
+        },
+      },
+      fill: false,
     },
-    fill: false,
-  }})
-  }
+  });
+};

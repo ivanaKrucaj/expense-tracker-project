@@ -66,7 +66,7 @@ const drawChart = (data) => {
     options: {
       legend: {
         display: true,
-        position: "bottom",
+        position: "top",
         fontSize: 16,
         labels: {
           padding: 15,
@@ -75,7 +75,7 @@ const drawChart = (data) => {
       layout: {
         padding: {
           top: 0,
-          bottom: 30,
+          bottom: 0,
         },
       },
       fill: false,
