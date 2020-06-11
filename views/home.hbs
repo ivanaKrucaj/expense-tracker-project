@@ -49,9 +49,8 @@
     <h6 class="trans-title">Earlier this month</h6>
 
     {{#each transactionsToDisplay}}
-    {{#if this.isExpenseType}}
     <div class="transaction-container">
-        <div class="red-bg row">
+        <div class="bg transaction-bg row">
             <div class="col-6 col-name">
                 <p class="trans-name">{{this.name}}</p>
                 <small>{{this.formattedDate}}</small>
@@ -61,27 +60,15 @@
                 <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
             </div>
             <div class="col-3 col-amount">
+                {{#if this.isExpenseType}}
                 <p class="amount-red">- {{this.amount}}</p>
-            </div>
-        </div>
-
-        {{else}}
-
-        <div class="blue-bg row">
-            <div class="col-6 col-name">
-                <p class="trans-name">{{this.name}}</p>
-                <small>{{this.formattedDate}}</small>
-            </div>
-            <div class="col-3 col-btn">
-                <a href="/editTrans/{{this._id}}"><i class="fas fa-pen fontawesome fa-edit"></i></a>
-                <a href="/home/delete/{{this._id}}"><i class="fas fa-trash-alt fontawesome fa-delete"></i></a>
-            </div>
-            <div class="col-3 col-amount">
+                {{else}}
                 <p class="amount-blue">+ {{this.amount}}</p>
+                {{/if}}
             </div>
         </div>
-        {{/if}}
         {{/each}}
     </div>
+</div>
 
 </div>

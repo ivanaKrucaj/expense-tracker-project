@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const UserModel = require('../models/user.model')
+const UserModel = require("../models/user.model");
 
 const transactionSchema = new Schema(
   {
@@ -26,7 +26,7 @@ const transactionSchema = new Schema(
         "clothing",
         "education",
         "healthcare",
-        "other"
+        "other",
       ],
     },
     amount: {
@@ -49,4 +49,4 @@ const transactionSchema = new Schema(
 );
 
 const TransactionModel = model("Transaction", transactionSchema);
-module.exports = TransactionModel
+module.exports = TransactionModel;
