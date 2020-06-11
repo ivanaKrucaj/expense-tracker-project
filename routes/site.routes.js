@@ -134,10 +134,24 @@ router.get("/editTrans/:id", (req, res) => {
         { type: 'expense', name: 'Expense', selected: isSelected(transaction.type, 'expense') }
       ]
 
+      const transactionCategories = [
+        { category: 'food', name: 'Food', selected: isSelected(transaction.category, 'food')},
+        { category: 'transport', name: 'Transport', selected: isSelected(transaction.category, 'transport')},
+        { category: 'accommodation', name: 'Accommodation', selected: isSelected(transaction.category, 'accommodation')},
+        { category: 'salary', name: 'Salary', selected: isSelected(transaction.category, 'salary')},
+        { category: 'travel', name: 'Travel', selected: isSelected(transaction.category, 'travel')},
+        { category: 'bills', name: 'Bills', selected: isSelected(transaction.category, 'bills')},
+        { category: 'entertainment', name: 'Entertainment', selected: isSelected(transaction.category, 'entertainment')},
+        { category: 'clothing', name: 'Clothing', selected: isSelected(transaction.category, 'clothing')},
+        { category: 'education', name: 'Education', selected: isSelected(transaction.category, 'education')},
+        { category: 'healthcare', name: 'Healthcare', selected: isSelected(transaction.category, 'healthcare')},
+        { category: 'other', name: 'Other', selected: isSelected(transaction.category, 'other')}
+      ]
+
       // populate date:
       const formattedDate = transaction.date.toISOString().substring(0, 10)
 
-      res.render("editTrans.hbs", { transactionTypes, transaction, formattedDate });
+      res.render("editTrans.hbs", { transactionTypes, transaction, formattedDate, transactionCategories });
     })
     .catch(() => {
       res.send("Something went wrong.");
