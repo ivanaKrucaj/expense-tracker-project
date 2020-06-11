@@ -38,6 +38,7 @@ router.get("/home", (req, res) => {
   // displays user(id) transactions on home page:
   TransactionModel.find(mongooseQuery)
     .then((transaction) => {
+
       // adds property to transaction object so we can filter income and expenses by bg color on home page:
       let newTrans = transaction.filter((element) => {
         if (element.type == "expense") {
