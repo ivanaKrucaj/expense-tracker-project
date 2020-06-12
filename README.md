@@ -38,7 +38,7 @@ Show Me the Money allows users to add transactions (expenses or income) by addin
 - 'home'  =>  Home page
 - 'createTrans'  =>  Create a transaction page
 - 'editTrans/:id'  =>  Edit a transaction page
-- 'diagram'  =>  diagrams (expenses pie chart and income/expense column chart)
+- 'diagrams'  =>  diagrams (expenses pie chart and income/expense column chart)
 
 
 ## Links
