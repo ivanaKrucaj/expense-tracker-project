@@ -12,15 +12,18 @@
 </head>
 
 <body>
-    <div class="diagram-page container intro">
-        <h2>Budget</h2>
-        <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
-        <canvas id="pieChart" style="display: block; height: 179px; width: 358px;" width="300" height="120"></canvas>
-        <h2>Expense vs Income</h2>
-        <canvas id="columnChart" style="display: block; height: 179px; width: 358px;" width="300" height="120"></canvas>
+    <div class="diagram-page container">
+        <div class="intro">
+            <h2>statistics</h2>
+            <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt fa-2x fa-logout"></i></a>
+        </div>
+        <canvas id="pieChart" style="display: block; height: 120px; width: 300px;" width="300" height="120"></canvas>
+        <div class="intro">
+            <h2>expense <small>vs</small> income</h2>
+        </div>
+        <canvas id="barChart" style="display: block; height: 120px; width: 300px;" width="300" height="120"></canvas>
     </div>
-    <script src="/javascripts/pieChart.js"></script>
-    <script src="/javascripts/columnChart.js"></script>
+    <script src="/javascripts/diagrams.js"></script>
 </body>
 
 </html>
