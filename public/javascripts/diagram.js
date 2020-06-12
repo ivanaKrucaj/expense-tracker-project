@@ -18,6 +18,8 @@ const drawChart = data => {
   data.transaction.forEach((d) => {
     if (!(d.category in finalData)) {
       finalData[d.category] = d.amount
+    } else {
+      finalData[d.category] += d.amount
     }
   })
   console.log(finalData)

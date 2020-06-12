@@ -252,7 +252,8 @@ router.get("/diagrams", (req, res) => {
       res.render("diagrams.hbs", { transaction });
     })
     .catch((err) => {
-      res.send("No charts for you", err);
+      res.redirect('/error')
+      // res.send("No charts for you", err);
     });
 });
 
@@ -263,7 +264,8 @@ router.get("/diagramsJson", (req, res) => {
       res.json({ transaction });
     })
     .catch((err) => {
-      res.send("No charts for you", err);
+      res.redirect('/error')
+      // res.send("No charts for you", err);
     });
 });
 
